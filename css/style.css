@@ -50,7 +50,7 @@ body {
   cursor: pointer;
   background: url(../svg/arrow_up.svg) ;
   background-repeat: no-repeat;
-  transform: .5s;
+
 
 }
 
@@ -58,14 +58,14 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
-  /* padding-top: 40px; */
-}
+  height: 10px;
+ }
 .dropdown-content {
   display: none;
 
   position: absolute;
-  right: -30px;
-  top: 20px;
+  right: -9px;
+  top: 49px;
   border-radius: 8px;
   background-color: #f9f9f9;
   width: 110px;
@@ -79,11 +79,12 @@ body {
   cursor: pointer;
 }
 .dropdown:hover .dropdown-content {
+  transition-delay: 2s;
   display: block;
 }
 
 .dropdown-content span {
-  color: black;
+
   padding: 14px 16px;
   text-align: center;
   text-decoration: none;
