@@ -64,17 +64,95 @@
         </div>
         <div class="container-down">
           <div class="container-down-content">
-            <div class="counter"><input type="" name="" class="counter"></div>
+            <div class="counter">
+              <div class="counter-units"><span id="count">0</span></div>
+              <div class="buttons-p-m"><button id="minus"><img src="./svg/minus.svg" alt=""></button><button id="plus"><img src="./svg/plus.svg" alt=""></button></div>
+            </div>
+            <div class="unit"><input type="text" name="" class="unit-price" placeholder="0 $"></div>
+            <button class="add">Добавить</button>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="points-out">
+        <div class="points">Точки выхода</div>
+        <div class="container">
+          <div class="container-up">
+          <div class="container-content">
+            <div class="container-content-header">
+              <span>количество акций</span>
+              <span>цена продажи</span>
+              <span>сумма</span>
+              <span id="empty"></span>
+            </div>
+            <div class="container-content-items">
+              <div class="item count"><span>5</span></div>
+              <div class="item price"><span class="currency">215</span></div>
+              <div class="item sum"><span class="currency">1075</span></div>
+              <div class="btn-del"><button class="del"><img src="./svg/del.svg" alt=""></button></div>
+            </div>
+            <div class="container-content-items">
+              <div class="item count"><span >1</span></div>
+              <div class="item price"><span class="currency">220</span></div>
+              <div class="item sum"><span class="currency">220</span></div>
+              <div class="btn-del"><button class="del"><img src="./svg/del.svg" alt=""></button></div>
+            </div>
+          </div>
+        </div>
+        <div class="container-down">
+          <div class="container-down-content">
+            <div class="counter">
+              <div class="counter-units"><span id="count">0</span></div>
+              <div class="buttons-p-m"><button id="minus"><img src="./svg/minus.svg" alt=""></button><button id="plus"><img src="./svg/plus.svg" alt=""></button></div>
+            </div>
             <div class="unit"><input type="text" name="" class="unit-price" placeholder="0 $"></div>
 
-
-          <button class="add">Добавить</button>
+          <button class="add">Продать</button>
           </div>
 
         </div>
       </div>
-      </div>
 
+    </section>
+    <section class="average-section">
+      <div class="average-container">
+        <div class="tabs">
+          <nav class="tabs-items">
+            <div id="a01"><a href="#tab-01" class="tabs-item">Среднее</a></div>
+            <div id="a02"><a href="#tab-02" class="tabs-item">Усреднение позиций</a></div>
+          </nav>
+          <div class="tabs-body">
+            <div id="tab-01" class="tabs-block">
+              <div id="apop"><p id="avg-p">Средняя цена позиции:</p><span id="avg-price-of-pos">207,5</span></div>
+              <div class="gggggg">
+                <div class="current-price">
+                  <p class="cur-price">Текущая цена</p>
+                  <input type="text" placeholder="" id="input-price">
+                </div>
+                <div class="current-price profit">
+                  <p class="cur-price">Текущий профит</p>
+                  <div class="cur-profit">+ 2 200 $</div>
+                </div>
+              </div>
+
+            </div>
+            <div id="tab-02" class="tabs-block">
+              <div class="avg-price-container">
+                <div class="avg-price">
+                  <p class="wish-price">Желаемая средняя цена</p>
+                  <input type="text" placeholder="" id="input-price">
+                </div>
+                <div class="avg-price right">
+                  <p class="wish-price">Текущая цена</p>
+                  <input type="text" placeholder="" id="input-price">
+                </div>
+              </div>
+              <div class="count-of-share"><p>Количество акций к покупке:</p><span id="shares">10</span></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
