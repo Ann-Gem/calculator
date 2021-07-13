@@ -361,19 +361,23 @@ body {
 }
 #a01:hover {
   border-bottom: 2px solid #34BC48;
+  color: #34BC48;
+  cursor: pointer;
 }
 .tabs-item:hover {
   color: #34BC48;
 
 }
 #a02 {
-  width: 182px;
+  width: 176px;
   height: 33px;
   border-bottom: 2px solid #DFDFDF;
   padding-left: 14px;
 }
 #a02:hover {
   border-bottom: 2px solid #34BC48;
+  color: #34BC48;
+  cursor: pointer;
 }
 .tabs-item:hover {
   color: #34BC48;
