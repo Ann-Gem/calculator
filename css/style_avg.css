@@ -205,6 +205,9 @@
   text-align: center;
   height: 31px;
 }
+.tab:hover {
+  cursor: pointer;
+}
 .tabs-wrapper {
   display: flex;
   flex-wrap: wrap;
