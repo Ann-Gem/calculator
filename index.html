@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style_avg.css">
   <title>Document</title>
 </head>
 <body>
@@ -116,48 +117,52 @@
       </div>
 
     </section>
+
+
+
     <section class="average-section">
-      <div class="average-container">
-        <div class="tabs">
-          <nav class="tabs-items">
-            <div id="a01"><a href="#tab-01" class="tabs-item">Среднее</a></div>
-            <div id="a02"><a href="#tab-02" class="tabs-item">Усреднение позиций</a></div>
-          </nav>
-          <div class="tabs-body">
-            <div id="tab-01" class="tabs-block">
-              <div id="apop"><p id="avg-p">Средняя цена позиции:</p><span id="avg-price-of-pos">207,5</span></div>
-              <div class="gggggg">
-                <div class="current-price">
-                  <p class="cur-price">Текущая цена</p>
-                  <input type="text" placeholder="" id="input-price">
-                </div>
-                <div class="current-price profit">
-                  <p class="cur-price">Текущий профит</p>
-                  <div class="cur-profit">+ 2 200 $</div>
-                </div>
+      <div class="wrapper">
+        <div class="tabs-wrapper">
+          <input class="input" type="radio" name="tabs" id="tab-1">
+          <input class="input" type="radio" name="tabs" id="tab-2">
+          <label class="tab tab-1" for="tab-1">Среднее</label>
+          <label class="tab tab-2" for="tab-2">Усреднение позиций</label>
+          <div class="content content-1">
+            <div id="apop"><p id="avg-p">Средняя цена позиции:</p><span id="avg-price-of-pos">207,5</span></div>
+            <div class="gggggg">
+              <div class="current-price">
+                <p class="cur-price">Текущая цена</p>
+                <input type="text" placeholder="" id="input-price">
               </div>
-
-            </div>
-            <div id="tab-02" class="tabs-block">
-              <div class="avg-price-container">
-                <div class="avg-price">
-                  <p class="wish-price">Желаемая средняя цена</p>
-                  <input type="text" placeholder="" id="input-price">
-                </div>
-                <div class="avg-price right">
-                  <p class="wish-price">Текущая цена</p>
-                  <input type="text" placeholder="" id="input-price">
-                </div>
+              <div class="current-price profit">
+                <p class="cur-price">Текущий профит</p>
+                <div class="cur-profit">+ 2 200 $</div>
               </div>
-              <div class="count-of-share"><p>Количество акций к покупке:</p><span id="shares">10</span></div>
-
+          </div>
+          </div>
+          <div class="content content-2">
+            <div class="avg-price-container">
+              <div class="avg-price">
+                <p class="wish-price">Желаемая средняя цена</p>
+                <input type="text" placeholder="" id="input-price">
+              </div>
+              <div class="avg-price right">
+                <p class="wish-price">Текущая цена</p>
+                <input type="text" placeholder="" id="input-price">
+              </div>
             </div>
+            <div class="count-of-share"><p>Количество акций к покупке:</p><span id="shares">10</span></div>
+          </div>
           </div>
         </div>
       </div>
+        
     </section>
+
+
+
   </main>
 
-
+  <script src="main.js"></script>
 </body>
 </html>
