@@ -213,15 +213,15 @@
   display: none;
 }
 #tab-1:checked ~ .tab-1 {
-  color: green;
-  border-bottom: 3px solid green;
+  color: #2DC033;
+  border-bottom: 2px solid #2DC033;
 }
 #tab-1:checked ~.content-1 {
   display: block;
 }
 #tab-2:checked ~ .tab-2 {
-  color: green;
-  border-bottom: 3px solid green;
+  color: #2DC033;
+  border-bottom: 2px solid #2DC033;
 }
 #tab-2:checked ~.content-2 {
   display: block;
