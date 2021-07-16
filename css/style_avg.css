@@ -188,7 +188,9 @@
 
 
 .wrapper {
-  width: 1300px;
+  max-width: 1300px;
+  min-width: 400px;
+  width: 100%;
   margin: 0 auto;
   padding-top: 44px;
 
@@ -362,3 +364,16 @@
   font-size: 12px;
   line-height: 16px;
   margin-bottom: 0px;
+
+}
+  @media (max-width:1000px) {
+    .tabs-wrapper {
+      padding-left: 14px;
+    }
+  }
+
+  @media (max-width:700px) {
+    .tabs-wrapper {
+      padding-left: 66px;
+    }
+  }

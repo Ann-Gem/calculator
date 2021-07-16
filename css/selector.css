@@ -1,0 +1,243 @@
+
+
+.spot {
+  display: flex;
+  padding-right: 150 px;
+}
+.spot span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  padding-right: 8px;
+}
+.arrow {
+  display: inline-block;
+  margin-top: 4px;
+  margin-right: 1px;
+  width: 10px;
+  height: 10px;
+  background: url(../svg/arrow.svg) ;
+  background-repeat: no-repeat;
+}
+.arrow:hover {
+  cursor: pointer;
+  background: url(../svg/arrow_up.svg) ;
+  background-repeat: no-repeat;
+}
+/* ///////////////////////////////////// */
+
+
+
+
+/* скрываем все инпуты, чтобы все выглядело красиво */
+
+.inputh {
+  display: none;
+}
+.spoth {
+  position: absolute;
+  width: 40px;
+  height: 18px;
+  padding-right: 150 px;
+  margin-top: 26px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  /* identical to box height, or 112% */
+
+  font-feature-settings: 'tnum' on, 'lnum' on;
+
+  color: #FFFFFF;
+  /* font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  padding-right: 8px;
+  padding-top: 27px;
+
+  display: flex;
+
+  /* width: 100%; */
+  /* background-color: #2DC033;
+  color: white; */
+  /* height: 70px; */
+  /* margin: 0 auto; */
+  /* color: white; */
+  /* width: 1300px; */
+  /* justify-content: space-between;
+  align-items: center; */
+}
+
+
+/* стилизуем стандартный текст лейбела(желательно смотреть этот стиль после .items) */
+#text {
+  position: absolute;
+  display: block;
+  top: 24px;
+  padding-left: 36px;
+}
+
+/* Задаем параметры нашего селекта - ширину, высоту и line-height(для центрирования текста по вертикали;этот парметр меньше ширины на 4px, т.к. в нашем блоке есть border размером в 2px со всех сторон) */
+
+.select {
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+  line-height: 30px;
+  position: relative;
+}
+
+/* Это наша стрелочка, показывающая, что селект можно раскрыть */
+.select:before {
+  content:  url(../svg/arrow_up.svg);
+  display: inline-block;
+  /* background: white; */
+  position: absolute;
+  right: -5px;
+  top: 2px;
+  z-index: 2;
+  width: 30px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  /* border: 2px solid #ddd; */
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+/* Если ничего не выбрано, то наш изначальный текст черного цвета, как и должно быть */
+.select input[name="list"]:not(:checked) ~ #text {
+  background-color: #2DC033;
+  color: white;
+  /* margin-top: 60px; */
+  /* background: white; */
+}
+
+/* Если же что-то выбрано, то наш текст становится невидимым и встает сверху выбранного параметра, чтобы при клике на него можно было заного открыть селект, что не было реализовано прошлым автором */
+.select input[name="list"]:checked ~ #text {
+  background: transparent;
+  color: transparent;
+  z-index: 2;
+}
+
+/* Стилизация выключенного селекта */
+#select:disabled ~ .items #text {
+  /* background: #2DC033; */
+  margin-top: 60px;
+
+}
+
+/* Стилизация блока с опциями. min-height сделана для фикса высоты при абсолютном позиционировании, overflow же сделан для фиксированной высоты(см. ниже) */
+.items {
+  /* display: block; */
+  display: flex;
+  /* min-height: 30px; */
+  position: absolute;
+/*   border: 2px solid #ddd; */
+  flex-direction: column;
+  overflow: hidden;
+  /* width: 100px; */
+  cursor: pointer;
+  margin-top: 60px;
+  /* justify-content: space-around; */
+    /* right: -9px; */
+  /* margin: 0 auto; */
+  /* font-weight: 500;
+  font-size: 14px;
+  line-height: 18px; */
+
+  width: 110px;
+  line-height: 39px;
+  /* left: 277px; */
+  /* top: 105px; */
+
+  background: #F7F5F5;
+
+  /* #2DC033; */
+
+
+  /* position: absolute; */
+/* width: 0px; */
+  /* height: 18px; */
+/* left: 346px; */
+/* top: 84px; */
+
+
+
+  /* top: 49px; */
+  border-radius: 8px;
+  border:none;
+  /* background-color: #2DC033; */
+  /* #f9f9f9; */
+  width: 110px;
+  height: 137px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Если наш селект закрыт, то он имеет высоту 30px(сделано для того, чтобы слишком большие надписи не растягивали его в высоту)  */
+#select:not(:checked) ~ .items {
+  height: 30px;
+  opacity: 100%;
+  background: #E5E5E5;
+  border:none;
+  box-shadow: none;
+}
+
+/* Все лейбелы(названия опций) изначально скрыты
+ВЫПАДАЮЩИЙ СПИСОК*/
+.items label {
+
+  display: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background:  #FFFFFF;
+  color:  #7B7B7B
+}
+
+/* Тут много объяснять не надо - просто выделение при наведении */
+
+.items label:hover {
+  background:  #F7F5F5;
+  cursor: pointer;
+}
+
+/* Опять же фикс из-за абсолютного позиционирования */
+
+#select:checked ~ .items {
+  margin-top: 60px;
+}
+
+/* Если наш селект открыт, то надо сделать все опции видимыми */
+
+#select:checked ~ .items label {
+  display: block;
+  text-align: center;
+}
+
+/* Если какая-либо опция была выбрана, то сделать ее видимой(при выборе селект автоматически закроется) */
+.items input:checked + label {
+  display: block!important;
+  margin-top: 60px;
+  opacity:100%;
+  /* alert('значение'); */
+/*   border: none; */
+  /* background:#2DC033; */
+
+   /* white; */
+
+}
+
+/* При открытии селекта создать подложку во весь экран, при клике на которую селект закроется, а значение останется пустым. background сделан для наглядности */
+
+#select:checked ~ .bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+/*   background: rgba(0,0,0,0.4); */
+}

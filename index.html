@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/style_avg.css">
+  <link rel="stylesheet" href="./css/selector.css">
   <title>Document</title>
 </head>
 <body>
@@ -23,15 +24,40 @@
         <div class="header-container">
           <h1 class="header-name">Калькулятор расчёта среднего</h1>
           <div class="spot">
-            <span>SPOT</span>
-            <div class="dropdown">
+            <span id="text">SPOT</span>
+            <label for="select" class="select">
+              <!-- Этот инпут отвечает за закрытие селекта при клике за его пределами. Также этот инпут является стандартным значением нашего селекта -->
+              <input class="input" type="radio" name="list" value="not_changed" id="bg" checked />
+              <!-- Этот инпут является переключателем селекта в состояние "открыт" -->
+              <input class="input" type="radio" name="list" value="not_changed" id="select">
+              <!-- Этот лейбел используется для создания подложки, клик по которой приводит к закрытию селекта -->
+              <label class="bg" for="bg"></label>
+              <!-- Этот див - список параметров селекта, где #text - то, что выводится, когда ничего не выбрано -->
+              <div class="items">
+                <!-- Инпут, при клике на который происходит выбор параметра и сворачивание селекта -->
+                <input class="input" type="radio" name="list" value="first_value" id="list[0]">
+                <!-- Название параметра -->
+                <label for="list[0]">LAT</label>
+                <!-- Инпут, при клике на который происходит выбор параметра и сворачивание селекта[1] -->
+                <input class="input" type="radio" name="list" value="second_value" id="list[1]">
+                <!-- Инпут, при клике на который происходит выбор параметра и сворачивание селекта[1] -->
+                <label for="list[1]">RIG</label>
+                <input class="input" type="radio" name="list" value="third_value" id="list[2]">
+                <label for="list[2]">LPL</label>
+                <!-- Текст селекта по умолчанию. Выводится тогда, когда ничего не выбрано -->
+
+              </div>
+            </label>
+            <!-- <span>SPOT</span> -->
+
+            <!-- <div class="dropdown">
               <div class="arrow"></div>
               <div class="dropdown-content">
                 <span>TAL</span>
                 <span>RIG</span>
                 <span>LPL</span>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -41,7 +67,7 @@
       <div class="points-in">
         <div class="points">Точки входа</div>
         <div class="container">
-          <div class="container-up">
+          <div class="container-table">
           <div class="container-content">
             <div class="container-content-header">
               <span>количество акций</span>
@@ -63,8 +89,8 @@
             </div>
           </div>
         </div>
-        <div class="container-down">
-          <div class="container-down-content">
+        <div class="container-add-field">
+          <div class="container-add-field-content">
             <div class="counter">
               <input type="text" id="count" class="counter-units"><span class="unit-col">шт</span>
               <!-- <div class="counter-units"><span id="count">0</span></div> -->
@@ -79,7 +105,7 @@
       <div class="points-out">
         <div class="points">Точки выхода</div>
         <div class="container">
-          <div class="container-up">
+          <div class="container-table">
           <div class="container-content">
             <div class="container-content-header">
               <span>количество акций</span>
@@ -101,8 +127,8 @@
             </div>
           </div>
         </div>
-        <div class="container-down">
-          <div class="container-down-content">
+        <div class="container-add-field">
+          <div class="container-add-field-content">
             <div class="counter">
               <input type="text" id="count" class="counter-units"><span class="unit-col">шт</span>
               <!-- <div class="counter-units"><span id="count">0</span></div> -->
@@ -156,7 +182,7 @@
           </div>
         </div>
       </div>
-        
+
     </section>
 
 
