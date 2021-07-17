@@ -1,34 +1,4 @@
 
-
-.spot {
-  display: flex;
-  padding-right: 150 px;
-}
-.spot span {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  padding-right: 8px;
-}
-.arrow {
-  display: inline-block;
-  margin-top: 4px;
-  margin-right: 1px;
-  width: 10px;
-  height: 10px;
-  background: url(../svg/arrow.svg) ;
-  background-repeat: no-repeat;
-}
-.arrow:hover {
-  cursor: pointer;
-  background: url(../svg/arrow_up.svg) ;
-  background-repeat: no-repeat;
-}
-/* ///////////////////////////////////// */
-
-
-
-
 /* скрываем все инпуты, чтобы все выглядело красиво */
 
 .inputh {
@@ -141,7 +111,7 @@
   /* width: 100px; */
   cursor: pointer;
   margin-top: 60px;
-  /* justify-content: space-around; */
+  justify-content: space-around;
     /* right: -9px; */
   /* margin: 0 auto; */
   /* font-weight: 500;
@@ -207,7 +177,7 @@
 /* Опять же фикс из-за абсолютного позиционирования */
 
 #select:checked ~ .items {
-  margin-top: 60px;
+  margin-top: 53px;
 }
 
 /* Если наш селект открыт, то надо сделать все опции видимыми */
