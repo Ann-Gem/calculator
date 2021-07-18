@@ -1,5 +1,5 @@
 
-/* скрываем все инпуты, чтобы все выглядело красиво */
+
 
 .input {
   display: none;
@@ -41,7 +41,7 @@
 }
 
 
-/* стилизуем стандартный текст лейбела(желательно смотреть этот стиль после .items) */
+
 #text {
   position: absolute;
   display: block;
@@ -49,7 +49,7 @@
   padding-left: 36px;
 }
 
-/* Задаем параметры нашего селекта - ширину, высоту и line-height(для центрирования текста по вертикали;этот парметр меньше ширины на 4px, т.к. в нашем блоке есть border размером в 2px со всех сторон) */
+
 
 .select {
   display: inline-block;
@@ -59,11 +59,11 @@
   position: relative;
 }
 
-/* Это наша стрелочка, показывающая, что селект можно раскрыть */
+
 .select:before {
   content:  url(../svg/arrow_up.svg);
   display: inline-block;
-  
+
   position: absolute;
   right: -3px;
   top: 1px;
@@ -99,7 +99,7 @@
 #select:checked + .select:before {
   opacity: 0;
 }
-/* Если ничего не выбрано, то наш изначальный текст черного цвета, как и должно быть */
+
 .select input[name="list"]:not(:checked) ~ #text {
   background-color: #2DC033;
   color: white;
@@ -107,21 +107,21 @@
   /* background: white; */
 }
 
-/* Если же что-то выбрано, то наш текст становится невидимым и встает сверху выбранного параметра, чтобы при клике на него можно было заного открыть селект, что не было реализовано прошлым автором */
+
 .select input[name="list"]:checked ~ #text {
   background: transparent;
   color: transparent;
   z-index: 2;
 }
 
-/* Стилизация выключенного селекта */
+
 #select:disabled ~ .items #text {
   /* background: #2DC033; */
   margin-top: 60px;
 
 }
 
-/* Стилизация блока с опциями. min-height сделана для фикса высоты при абсолютном позиционировании, overflow же сделан для фиксированной высоты(см. ниже) */
+
 .items {
   /* display: block; */
   display: flex;
@@ -169,7 +169,7 @@
   z-index: 1;
 }
 
-/* Если наш селект закрыт, то он имеет высоту 30px(сделано для того, чтобы слишком большие надписи не растягивали его в высоту)  */
+
 #select:not(:checked) ~ .items {
   height: 30px;
   opacity: 100%;
@@ -178,8 +178,7 @@
   box-shadow: none;
 }
 
-/* Все лейбелы(названия опций) изначально скрыты
-ВЫПАДАЮЩИЙ СПИСОК*/
+
 .items label {
 
   display: none;
@@ -189,27 +188,27 @@
   color:  #7B7B7B
 }
 
-/* Тут много объяснять не надо - просто выделение при наведении */
+
 
 .items label:hover {
   background:  #F7F5F5;
   cursor: pointer;
 }
 
-/* Опять же фикс из-за абсолютного позиционирования */
+
 
 #select:checked ~ .items {
   margin-top: 55px;
 }
 
-/* Если наш селект открыт, то надо сделать все опции видимыми */
+
 
 #select:checked ~ .items label {
   display: block;
   text-align: center;
 }
 
-/* Если какая-либо опция была выбрана, то сделать ее видимой(при выборе селект автоматически закроется) */
+
 .items input:checked + label {
   display: block!important;
   margin-top: 60px;
@@ -222,7 +221,7 @@
 
 }
 
-/* При открытии селекта создать подложку во весь экран, при клике на которую селект закроется, а значение останется пустым. background сделан для наглядности */
+
 
 #select:checked ~ .bg {
   position: fixed;
