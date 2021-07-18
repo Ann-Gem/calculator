@@ -25,11 +25,12 @@
           <h1 class="header-name">Калькулятор расчёта среднего</h1>
           <div class="spot">
             <span id="text">SPOT</span>
-            <label for="select" class="select">
+
               <!-- Этот инпут отвечает за закрытие селекта при клике за его пределами. Также этот инпут является стандартным значением нашего селекта -->
               <input class="input" type="radio" name="list" value="not_changed" id="bg" checked />
               <!-- Этот инпут является переключателем селекта в состояние "открыт" -->
               <input class="input" type="radio" name="list" value="not_changed" id="select">
+              <label for="select" class="select"></label>
               <!-- Этот лейбел используется для создания подложки, клик по которой приводит к закрытию селекта -->
               <label class="bg" for="bg"></label>
               <!-- Этот див - список параметров селекта, где #text - то, что выводится, когда ничего не выбрано -->
@@ -47,7 +48,7 @@
                 <!-- Текст селекта по умолчанию. Выводится тогда, когда ничего не выбрано -->
 
               </div>
-            </label>
+
             <!-- <span>SPOT</span> -->
 
             <!-- <div class="dropdown">

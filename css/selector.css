@@ -1,7 +1,7 @@
 
 /* скрываем все инпуты, чтобы все выглядело красиво */
 
-.inputh {
+.input {
   display: none;
 }
 .spoth {
@@ -63,20 +63,42 @@
 .select:before {
   content:  url(../svg/arrow_up.svg);
   display: inline-block;
-  /* background: white; */
+  
   position: absolute;
-  right: -5px;
-  top: 2px;
+  right: -3px;
+  top: 1px;
   z-index: 2;
   width: 30px;
   height: 26px;
   text-align: center;
   line-height: 26px;
-  /* border: 2px solid #ddd; */
+
   transform: rotate(180deg);
   cursor: pointer;
-}
 
+}
+.select:after {
+  content: url(../svg/arrow_up.svg);
+  display: inline-block;
+
+  position: absolute;
+  right: -3px;
+  top: -2px;
+  z-index: 2;
+  width: 30px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+
+  cursor: pointer;
+  opacity: 0;
+}
+#select:checked + .select:after {
+  opacity: 1;
+}
+#select:checked + .select:before {
+  opacity: 0;
+}
 /* Если ничего не выбрано, то наш изначальный текст черного цвета, как и должно быть */
 .select input[name="list"]:not(:checked) ~ #text {
   background-color: #2DC033;
@@ -111,7 +133,7 @@
   /* width: 100px; */
   cursor: pointer;
   margin-top: 60px;
-  justify-content: space-around;
+  /* justify-content: space-around; */
     /* right: -9px; */
   /* margin: 0 auto; */
   /* font-weight: 500;
@@ -177,7 +199,7 @@
 /* Опять же фикс из-за абсолютного позиционирования */
 
 #select:checked ~ .items {
-  margin-top: 53px;
+  margin-top: 55px;
 }
 
 /* Если наш селект открыт, то надо сделать все опции видимыми */
