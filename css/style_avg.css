@@ -1,6 +1,5 @@
 .wrapper {
   max-width: 1300px;
-  /* min-width: 400px; */
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
@@ -8,7 +7,8 @@
 }
 .tabs-wrapper {
   display: flex;
-  padding-left: 64px;
+  /* padding-left: 64px; */
+  padding-left: 1.4%;
 }
 .content {
   display: none;
@@ -177,7 +177,7 @@
   margin-bottom: 0px;
 
 }
-  @media (max-width:1000px) {
+  /* @media (max-width:1000px) {
     .tabs-wrapper {
       padding-left: 14px;
     }
@@ -186,5 +186,47 @@
   @media (max-width:700px) {
     .tabs-wrapper {
       padding-left: 66px;
+    }
+  } */
+
+  @media (max-width:1300px) {
+    .tabs-wrapper {
+      /* padding-left: 14px; */
+      padding-left: 1.4%;
+
+    }
+  }
+
+  @media (max-width:999px) {
+    .tabs-wrapper {
+      padding: 0;
+      margin: 0 auto;
+      width: 81.14%;
+      min-width: 476px;
+      max-width: 568px;
+    }
+    .avg-price-container {
+     min-width: 476px;
+
+    }
+  }
+
+  @media (max-width:500px) {
+    .wrapper {
+      padding-top: 36px;
+    }
+    .tabs-wrapper {
+      margin: 0 auto;
+      width: 93.5%;
+      min-width: 374px;
+    }
+    .avg-price-container {
+      min-width: 374px;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+
+    .right {
+      padding-left: 0;
     }
   }

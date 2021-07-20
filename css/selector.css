@@ -133,7 +133,7 @@
   /* width: 100px; */
   cursor: pointer;
   margin-top: 60px;
-  /* justify-content: space-around; */
+  justify-content: space-around;
     /* right: -9px; */
   /* margin: 0 auto; */
   /* font-weight: 500;
@@ -211,7 +211,7 @@
 
 .items input:checked + label {
   display: block!important;
-  margin-top: 60px;
+  margin-top: 80px;
   opacity:100%;
   /* alert('значение'); */
 /*   border: none; */
