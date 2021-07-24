@@ -52,13 +52,6 @@ body {
   margin-right: 1.4%;
 }
 
-/* .spot span {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  padding-right: 8px;
-} */
-
 .points-in-out {
   display: flex;
   width: 100%;
@@ -438,9 +431,12 @@ body {
   }
   .container-add-field {
     flex-wrap: wrap;
-    height: 106px;
+    height: 109px;
     padding-bottom: 0px;
-    padding-top: 20px;
+    padding-top: 16px;
+  }
+  .unit {
+    margin-bottom: 10px;
   }
   .container-add-field-content {
     flex-wrap: wrap;
