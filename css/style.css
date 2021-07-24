@@ -264,7 +264,7 @@ body {
   height: 22px;
   border: none;
   border-radius: 6px;
-  transition: width 2s, height 2s, background-color 2s, transform 2s, box-shadow 0.6s;
+  transition: box-shadow 0.3s;
 }
 
 .plus {
@@ -281,10 +281,8 @@ body {
 
 .plus:hover, .minus:hover {
   cursor: pointer;
-  box-shadow: 1px 1px 5px #34BC48;
+  box-shadow: 2px 2px 5px #34BC48;
   border-radius: 6px;
-
-
 }
 
 .unit {
