@@ -28,7 +28,7 @@
 .header-h1 {
   display: flex;
   align-items: center;
-  margin-left: 1.4%;
+  margin-left: 1.6%;
 }
 
 .header-name {
@@ -40,7 +40,7 @@
 .header-spot {
   display: flex;
   padding-top: 8px;
-  margin-right: 1.4%;
+  margin-right: 1.6%;
 }
 
 @media (max-width:999px) {
@@ -54,7 +54,6 @@
   .header-container-content {
    flex-basis: 84%;
    min-width: 476px;
-   margin: 0 auto;
   }
 
   .header-spot{
@@ -65,6 +64,9 @@
 @media (max-width:500px) {
   .header-container {
     min-width: 374px;
+  }
+  .header-h1 {
+    margin-left: 0;
   }
   .header-container-content {
     flex-basis: 93.5%;
@@ -81,3 +83,4 @@
     line-height: 18px;
   }
 }
+

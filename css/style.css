@@ -21,7 +21,8 @@ body {
   flex-direction: column;
   flex-basis: 45.9%;
   min-width: 476px;
-  margin-left: 1.4%;
+  min-height: 418px;
+  margin-left: 1.6%;
 }
 
 .points-out {
@@ -29,7 +30,8 @@ body {
   flex-direction: column;
   flex-basis: 45.9%;
   min-width: 476px;
-  margin-right: 1.4%;
+  min-height: 418px;
+  margin-right: 1.6%;
 }
 
 .points {
@@ -327,15 +329,19 @@ body {
 
 
 
-@media (max-width:500px) {
+
+@media screen and (max-width:500px) {
+
   .points-in {
     min-width: 374px;
     width: 93.5%;
+    display: block;
   }
   .points-out {
     min-width: 374px;
     width: 93.5%;
     padding-top: 10px;
+    display: block;
   }
   .points {
     padding-top: 20px;
@@ -352,6 +358,10 @@ body {
     width: 356px;
     margin: 12px auto;
   }
+  .container-table {
+    min-height: 164px;
+  }
+
   .container-content-header {
     font-weight: 500;
     font-size: 12px;
@@ -386,3 +396,6 @@ body {
     width: 165px;
   }
 }
+
+
+
