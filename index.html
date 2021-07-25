@@ -14,36 +14,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/style_avg.css">
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/average_section.css">
   <link rel="stylesheet" href="./css/selector.css">
   <title>Calculator</title>
 </head>
 <body>
+
   <header>
       <div class="header">
         <div class="header-container">
           <div class="header-container-content">
           <div class="header-h1"><h1 class="header-name">Калькулятор расчёта среднего</h1></div>
-          <div class="spot">
-
+          <div class="header-spot">
             <div class="select-box">
               <div class="options-container">
                 <div class="option">
                   <input type="radio" class="radio" id="tal" name="category" />
                   <label for="tal" class="lable">TAL</label>
                 </div>
-
                 <div class="option">
                   <input type="radio" class="radio" id="rig" name="category" />
                   <label for="rig" class="lable">RIG</label>
                 </div>
-
                 <div class="option">
                   <input type="radio" class="radio" id="lpl" name="category" />
                   <label for="lpl" class="lable">LPL</label>
                 </div>
               </div>
-
               <div class="selected">
                 SPOT
               </div>
@@ -53,7 +51,9 @@
       </div>
     </div>
   </header>
+
   <main>
+
     <section class="points-in-out">
       <div class="points-in">
         <div class="points">Точки входа</div>
@@ -61,10 +61,10 @@
           <div class="container-table">
           <div class="container-content">
             <div class="container-content-header">
-              <span>кол-во акций</span>
-              <span>цена покупки</span>
-              <span>сумма</span>
-              <span class="empty"></span>
+              <div class="tabe-column-name"><span>кол-во акций</span></div>
+              <div class="tabe-column-name"><span>цена покупки</span></div>
+              <div class="tabe-column-name"><span>сумма</span></div>
+              <div class="empty"><span></span></div>
             </div>
             <div class="container-content-items">
               <div class="item count"><span >10</span></div>
@@ -98,10 +98,10 @@
           <div class="container-table">
           <div class="container-content">
             <div class="container-content-header">
-              <span>кол-во акций</span>
-              <span>цена продажи</span>
-              <span>сумма</span>
-              <span class="empty"></span>
+              <div class="tabe-column-name"><span>кол-во акций</span></div>
+              <div class="tabe-column-name"><span>цена покупки</span></div>
+              <div class="tabe-column-name"><span>сумма</span></div>
+              <div class="empty"><span></span></div>
             </div>
             <div class="container-content-items">
               <div class="item count"><span>5</span></div>
@@ -130,8 +130,6 @@
       </div>
       </div>
     </section>
-
-
 
     <section class="average-section">
       <div class="wrapper">
@@ -169,8 +167,6 @@
           </div>
         </div>
     </section>
-
-
 
   </main>
 

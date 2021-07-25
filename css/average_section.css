@@ -1,6 +1,6 @@
 .average-section {
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 }
 
 .wrapper {
@@ -184,7 +184,7 @@
 }
 
 .avg-price {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   width: 22.2%;
 }
@@ -237,7 +237,7 @@
       min-width: 374px;
     }
     .avg-price {
-      flex-basis: 47.5%;
+      flex-basis: 47.3%;
     }
     .right {
       padding-left: 22px;
@@ -246,10 +246,10 @@
       min-width: 374px;
     }
     .current-price {
-      flex: 0 1 47.5%;
+      flex: 0 1 47.3%;
       min-width: 169px;
     }
     .profit {
       padding-left: 16px;
     }
-  }
+  }-
