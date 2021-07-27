@@ -66,27 +66,28 @@
               <div class="tabe-column-name"><span>сумма</span></div>
               <div class="empty"><span></span></div>
             </div>
-            <div class="container-content-items">
+            <div class="no-recording" id="norec-1">Нет записей</div>
+            <!-- <div class="container-content-items">
               <div class="item count"><span >10</span></div>
               <div class="item price"><span class="currency">210</span></div>
               <div class="item sum"><span class="currency">2100</span></div>
               <div class="btn-del"><button class="del"></button></div>
-            </div>
-            <div class="container-content-items">
+            </div> -->
+            <!-- <div class="container-content-items">
               <div class="item count"><span >10</span></div>
               <div class="item price"><span class="currency">205</span></div>
               <div class="item sum"><span class="currency">2050</span></div>
               <div class="btn-del"><button class="del"></button></div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="container-add-field">
           <div class="container-add-field-content">
             <div class="counter">
-              <input type="text" id="count-to-buy" class="counter-units">
-              <div class="buttons-p-m"><button class="minus"></button><button class="plus"></button></div>
+              <input type="text" id="count-to-buy" class="counter-units" value="">
+              <div class="buttons-p-m"><button class="minus" id="mn1"></button><button class="plus" id="pl1"></button></div>
             </div>
-            <div class="unit"><input type="text" class="unit-price" placeholder="0 $"></div>
+            <div class="unit"><input type="text" class="unit-price" id="add-input" placeholder="0 $"></div>
             <button class="add" id="buy">Добавить</button>
           </div>
         </div>
@@ -99,31 +100,32 @@
           <div class="container-content">
             <div class="container-content-header">
               <div class="tabe-column-name"><span>кол-во акций</span></div>
-              <div class="tabe-column-name"><span>цена покупки</span></div>
+              <div class="tabe-column-name"><span>цена продажи</span></div>
               <div class="tabe-column-name"><span>сумма</span></div>
               <div class="empty"><span></span></div>
             </div>
-            <div class="container-content-items">
+            <div class="no-recording" id="norec-2">Нет записей</div>
+            <!-- <div class="container-content-items">
               <div class="item count"><span>5</span></div>
               <div class="item price"><span class="currency">215</span></div>
               <div class="item sum"><span class="currency">1075</span></div>
               <div class="btn-del"><button class="del"></button></div>
-            </div>
-            <div class="container-content-items">
+            </div> -->
+            <!-- <div class="container-content-items">
               <div class="item count"><span >1</span></div>
               <div class="item price"><span class="currency">220</span></div>
               <div class="item sum"><span class="currency">220</span></div>
               <div class="btn-del"><button class="del"></button></div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="container-add-field">
           <div class="container-add-field-content">
             <div class="counter">
               <input type="text" id="count-to-sell" class="counter-units">
-              <div class="buttons-p-m"><button class="minus"></button><button class="plus"></button></div>
+              <div class="buttons-p-m"><button class="minus" id="mn2"></button><button class="plus" id="pl2"></button></div>
             </div>
-            <div class="unit"><input type="text" class="unit-price" placeholder="0 $"></div>
+            <div class="unit"><input type="text" class="unit-price" id="sell-input" placeholder="0 $"></div>
           <button class="add" id="sell">Продать</button>
           </div>
         </div>

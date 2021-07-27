@@ -12,6 +12,7 @@ body {
   max-width: 1220px;
   min-height: 418px;
   justify-content: space-between;
+  align-items: flex-start;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -95,7 +96,7 @@ body {
   width: 10px;
 }
 
-.container-content-items {
+.container-content-items-1 {
   display: flex;
   justify-content: space-between;
   padding-top: 23px;
@@ -105,6 +106,27 @@ body {
   font-size: 14px;
   line-height: 22px;
   z-index: 0;
+}
+.container-content-items-2 {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 23px;
+  height: 22px;
+  color: #7B7B7B;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  z-index: 0;
+}
+.no-recording {
+  display: flex;
+  justify-content: center;
+  padding-top: 46px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #B1B1B1;
+
 }
 
 .item {
