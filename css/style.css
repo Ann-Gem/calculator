@@ -35,7 +35,7 @@ body {
   margin-right: 1.6%;
 }
 
-.points {
+.points h2{
   padding-top: 51px;
   font-weight: 500;
   font-size: 20px;
@@ -429,6 +429,7 @@ body {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    margin: 0;
 }
 input[type='number'] {
     -moz-appearance: textfield;

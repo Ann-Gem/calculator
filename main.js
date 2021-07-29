@@ -1,15 +1,11 @@
-// Выпадающий список
 
+// Выпадающий список
 const selected = document.querySelector(".selected");
 const optionsContainer = document.querySelector(".options-container");
-
 const optionsList = document.querySelectorAll(".option");
-
 selected.addEventListener("click", function () {
   optionsContainer.classList.toggle("active");
 });
-
-
 optionsList.forEach(function (option) {
   option.addEventListener("click", function () {
     selected.innerHTML = option.querySelector("label").innerHTML;
@@ -17,99 +13,103 @@ optionsList.forEach(function (option) {
   });
 });
 
-
-
 // Точки входа
 
+
+let plus1 = document.getElementById('pl1');
+let minus1 = document.getElementById('mn1');
+let divTable = document.getElementsByClassName("container-content");
+let addBtn = document.getElementById('buy');
+
+let plus2 = document.getElementById('pl2');
+let minus2 = document.getElementById('mn2');
+let sellBtn = document.getElementById('sell');
+////////////////////////////////////
+let inputPrice1 = document.getElementById('add-input');
+let inputPrice2 = document.getElementById('sell-input');
+let inputCount1 = document.getElementById('count-to-buy');
+let inputCount2 = document.getElementById('count-to-sell');
+////////////////////////////////////
 let itemPrice1 = 0;
 let itemPrice2 = 0;
 let itemSum = 0;
 let inputCountToBuy = 0;
-
-let plus1 = document.getElementById('pl1');
-let minus1 = document.getElementById('mn1');
-
-let divTable = document.getElementsByClassName("container-content");
-
-let addBtn = document.getElementById('buy');
-
-
 let inputCountToSell = 0;
-
-let plus2 = document.getElementById('pl2');
-let minus2 = document.getElementById('mn2');
-
-let sellBtn = document.getElementById('sell');
+////////////////////////////////////
 
 
+function changingCount(sign, element) {
+  if (sign =='plus') {
+    element.value++;
+  }
+  else if (element.value > 0) {
+    element.value--;
+  }
+  return element.value;
+}
+////////////////////////////////////
+function addButtonControl(price, count, element) {
+  if (price==0 || count==0) {
+    element.setAttribute("disabled", true);
+  }
+  else{
+    element.removeAttribute('disabled');
+  }
+}
+
+////////////////////////////////////
 plus1.addEventListener('click', () => {
-  inputCountToBuy = +document.getElementById('count-to-buy').value;
-  inputCountToBuy++;
-  document.getElementById('count-to-buy').value = inputCountToBuy;
-  // if ((inputCountToBuy > 0)&&(itemPrice1>0))
-  //   addBtn.removeAttribute('disabled');
-})
+  inputCountToBuy = changingCount('plus', inputCount1) ;
+});
 
 minus1.addEventListener('click', () => {
-  inputCountToBuy = +document.getElementById('count-to-buy').value;
-  if (inputCountToBuy > 0) {
-    inputCountToBuy--;
-    document.getElementById('count-to-buy').value = inputCountToBuy;
-    // if ((inputCountToBuy == 0)||(itemPrice1 == 0))
-    //   addBtn.setAttribute("disabled", true);
-  }
+  inputCountToBuy = changingCount('minus', inputCount1) ;
 })
 
-////////////////////////////////////////
-
-document.getElementById('add-input').addEventListener('change', () => {
-  itemPrice1 = +document.getElementById('add-input').value;
-  if (itemPrice1 <= 0)
-    addBtn.setAttribute("disabled", true);
-  else if ((inputCountToBuy>0)&&(itemPrice1>0))
-    addBtn.removeAttribute('disabled');
+plus2.addEventListener('click', () => {
+  inputCountToSell = changingCount('plus', inputCount2) ;
 })
 
-document.getElementById('count-to-buy').addEventListener('change', () => {
-  inputCountToBuy = +document.getElementById('count-to-buy').value;
-  if (inputCountToBuy <= 0)
-    addBtn.setAttribute("disabled", true);
-    else if ((inputCountToBuy>0)&&(itemPrice1>0))
-    addBtn.removeAttribute('disabled');
+minus2.addEventListener('click', () => {
+  inputCountToSell = changingCount('minus', inputCount2) ;
+})
+
+
+////////////////////////////////////
+inputPrice1.addEventListener('input', () => {
+  itemPrice1 = +inputPrice1.value;
+  addButtonControl(inputPrice1.value,inputCount1.value, addBtn);
 })
 
 ////////////////////////////////////
-document.getElementById('sell-input').addEventListener('change', () => {
-  itemPrice2 = +document.getElementById('sell-input').value;
-  if (itemPrice2 <= 0)
-  sellBtn.setAttribute("disabled", true);
-    else if ((inputCountToSell>0)&&(itemPrice2>0))
-    sellBtn.removeAttribute('disabled');
-
+inputCount1.addEventListener('input', () => {
+  inputCountToBuy = +inputCount1.value;
+  addButtonControl(inputPrice1.value,inputCount1.value, addBtn);
 })
-document.getElementById('count-to-sell').addEventListener('change', () => {
-  inputCountToSell = +document.getElementById('count-to-sell').value;
-  if (inputCountToSell <= 0)
-  sellBtn.setAttribute("disabled", true);
-    else if ((inputCountToSell>0)&&(itemPrice2>0))
-    sellBtn.removeAttribute('disabled');
+////////////////////////////////////
+inputPrice2.addEventListener('input', () => {
+  itemPrice2 = +inputPrice2.value;
+  addButtonControl(inputPrice2.value,inputCount2.value, sellBtn);
+})
+////////////////////////////////////
+inputCount2.addEventListener('input', () => {
+  inputCountToSell = +inputCount2.value;
+  addButtonControl(inputPrice2.value,inputCount2.value, sellBtn);
 });
-
 
 ////////////////////////////////////
 addBtn.addEventListener('click', function () {
-  if ((inputCountToBuy > 0)&&(itemPrice1>0) ){
+  if ((inputCountToBuy > 0) && (itemPrice1 > 0)) {
     let newItemRow = document.createElement('div');
     newItemRow.classList.add('container-content-items-1');
 
-
-    inputCountToBuy = +document.getElementById('count-to-buy').value;
+    inputCountToBuy = +inputCount1.value;
 
     let newItemCount = document.createElement('div');
     newItemCount.classList.add('item', 'count');
     newItemCount.insertAdjacentHTML('afterbegin', `<span>${inputCountToBuy}</span>`);
 
-    itemPrice1 = +document.getElementById('add-input').value;
+    itemPrice1 = +inputPrice1.value;
 
 
     let newItemPrice = document.createElement('div');
@@ -126,11 +126,16 @@ addBtn.addEventListener('click', function () {
     let delBtn = document.createElement('button');
     delBtn.classList.add('del');
     delBtn.insertAdjacentElement('afterbegin', del);
-
+    /// добавление
     newItemRow.insertAdjacentElement('beforeend', newItemCount);
     newItemRow.insertAdjacentElement('beforeend', newItemPrice);
     newItemRow.insertAdjacentElement('beforeend', newItemSum);
     newItemRow.insertAdjacentElement('beforeend', delBtn);
+
+    inputPrice1.value="";
+    inputCount1.value="";
+    addButtonControl(0,0, addBtn);
+
 
     let divDefault1 = document.getElementById('norec-1');
     delBtn.addEventListener('click', function () {
@@ -155,44 +160,19 @@ addBtn.addEventListener('click', function () {
 
 
 
-
-
-
-// Точки выхода
-
-
-
-plus2.addEventListener('click', () => {
-  inputCountToSell = +document.getElementById('count-to-sell').value;
-  inputCountToSell++;
-  document.getElementById('count-to-sell').value = inputCountToSell;
-
-})
-
-minus2.addEventListener('click', () => {
-  inputCountToSell = +document.getElementById('count-to-sell').value;
-  if (inputCountToSell > 0) {
-    inputCountToSell--;
-    document.getElementById('count-to-sell').value = inputCountToSell;
-  }
-
-
-})
-
-
 ////////////////////////////////////
 sellBtn.addEventListener('click', function () {
-  if ((inputCountToSell > 0)&&(itemPrice2 > 0)) {
+  if ((inputCountToSell > 0) && (itemPrice2 > 0)) {
     let newItemRow = document.createElement('div');
     newItemRow.classList.add('container-content-items-2');
 
-    inputCountToSell = +document.getElementById('count-to-sell').value;
+    inputCountToSell = +inputCount2.value;
 
     let newItemCount = document.createElement('div');
     newItemCount.classList.add('item', 'count');
     newItemCount.insertAdjacentHTML('afterbegin', `<span>${inputCountToSell}</span>`);
 
-    itemPrice2 = +document.getElementById('sell-input').value;
+    itemPrice2 = +inputPrice2.value;
 
 
 
@@ -215,6 +195,9 @@ sellBtn.addEventListener('click', function () {
     newItemRow.insertAdjacentElement('beforeend', newItemPrice);
     newItemRow.insertAdjacentElement('beforeend', newItemSum);
     newItemRow.insertAdjacentElement('beforeend', delBtn);
+    inputPrice2.value="";
+    inputCount2.value="";
+    addButtonControl(0,0, sellBtn);
 
     let divDefault2 = document.getElementById('norec-2');
     delBtn.addEventListener('click', function () {
@@ -238,3 +221,4 @@ sellBtn.addEventListener('click', function () {
     }
   }
 })
+
