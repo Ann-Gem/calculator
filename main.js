@@ -59,19 +59,23 @@ function addButtonControl(price, count, element) {
 
 ////////////////////////////////////
 plus1.addEventListener('click', () => {
-  inputCountToBuy = changingCount('plus', inputCount1) ;
+  inputCountToBuy = +changingCount('plus', inputCount1);
+  addButtonControl(inputPrice1.value, inputCount1.value, addBtn);
 });
 
 minus1.addEventListener('click', () => {
-  inputCountToBuy = changingCount('minus', inputCount1) ;
+  inputCountToBuy = +changingCount('minus', inputCount1);
+  addButtonControl(inputPrice1.value, inputCount1.value, addBtn);
 })
 
 plus2.addEventListener('click', () => {
-  inputCountToSell = changingCount('plus', inputCount2) ;
+  inputCountToSell = +changingCount('plus', inputCount2);
+  addButtonControl(inputPrice2.value, inputCount2.value, sellBtn);
 })
 
 minus2.addEventListener('click', () => {
-  inputCountToSell = changingCount('minus', inputCount2) ;
+  inputCountToSell = +changingCount('minus', inputCount2);
+  addButtonControl(inputPrice2.value, inputCount2.value, sellBtn);
 })
 
 
