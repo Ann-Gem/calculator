@@ -80,7 +80,7 @@ function addRecord(price, count,className1,norecId,iter){
     price = "";
     count = "";
 
-    let divDefault1 = document.getElementById(norecId);
+    let divDefault = document.getElementById(norecId);
     delBtn.addEventListener('click', function () {
       newItemRow.remove();
       let div = document.createElement('div');
@@ -91,12 +91,12 @@ function addRecord(price, count,className1,norecId,iter){
       if (document.getElementsByClassName(className1).length == 0)
         divTable[iter].insertAdjacentElement('beforeend', div);
     });
-    if (divDefault1) {
-      divDefault1.remove();
+    if (divDefault) {
+      divDefault.remove();
     }
     divTable[iter].appendChild(newItemRow);
     if (!newItemRow) {
-      divTable[iter].insertAdjacentElement('afterbegin', divDefault1);
+      divTable[iter].insertAdjacentElement('afterbegin', divDefault);
     }
 
 
