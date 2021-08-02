@@ -83,11 +83,11 @@ body {
   background: linear-gradient(90.5deg, rgba(143, 213, 28, 0.2) 0%, rgba(143, 213, 28, 0.2) 0.01%, rgba(255, 194, 60, 0.16) 46.95%, rgba(253, 134, 255, 0.1) 100.16%);
 }
 
-.tabe-column-name {
+.table-column-name {
   display: flex;
 }
 
-.tabe-column-name span {
+.table-column-name span {
   height: 18px;
   padding-right: 7px;
 }
@@ -177,7 +177,7 @@ body {
 .del:hover {
   -webkit-transform: scale(1.5);
   -ms-transform: scale(1.5);
-  -moz-transform: scale(1.5);;
+  -moz-transform: scale(1.5);
   transform: scale(1.5) rotate(180deg);
   cursor: pointer;
 }
