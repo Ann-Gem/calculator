@@ -1,6 +1,7 @@
 let container1 = document.getElementById('container1');
 let container2 = document.getElementById('container2');
 let inputCountToBuy = 0;
+let itemPrice = 0;
 
 function createForm(container) {
   let resultArray = [];
@@ -18,42 +19,31 @@ function createForm(container) {
   minus[0].addEventListener('click', () => {
   inputCountToBuy = Number(changingCount('minus', inputAmount[0]));
   addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
-  })
+  });
+
+  inputPrice[0].addEventListener('input', () => {
+  itemPrice = Number(inputPrice[0].value);
+  addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
+  });
+
+  inputAmount[0].addEventListener('input', () => {
+  inputCountToBuy = Number(inputAmount[0].value);
+  addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
+  });
 
   addBtn[0].addEventListener('click', function () {
-  addRecord(Number(inputPrice[0].value),Number(inputAmount[0].value),'container-content-items-1','norec-1',0);
-  inputPrice.value = "";
-  inputAmount.value = "";
+  addRecord(Number(inputPrice[0].value),Number(inputAmount[0].value));
+  inputPrice[0].value = "";
+  inputAmount[0].value = "";
   addButtonControl(0, 0, addBtn[0]);
+  });
 
-  })
-
-  // [].forEach.call(plus,function(el) {
-  //   el.addEventListener('click', () => {
-  //     inputAmount = Number(changingCount('plus', inputAmount));
-  //     addButtonControl(inputPrice.value, inputAmount.value, addBtn[0]);
-  // })
-  // });
-
-  // [].forEach.call(minus,function(el) {
-  //   el.addEventListener('click', () => {
-  //     inputAmount = Number(changingCount('minus', inputAmount));
-  //     addButtonControl(inputPrice.value, inputAmount.value, addBtn[0]);
-  // })
-  // });
-  // [].forEach.call(addBtn, function(el) {
-  //   el.addEventListener('click', function () {
-  //     addRecord(Number(inputPrice.value),Number(inputAmount.value),'container-content-items-1','norec-1',0);
-  //     inputPrice.value = "";
-  //     inputAmount.value = "";
-  //     addButtonControl(0, 0, addBtn);
-  // })
-  // })
 
 }
 
 
 createForm(container1);
+
 createForm(container2);
 
 
@@ -80,7 +70,7 @@ createForm(container2);
 // let itemPrice2 = 0;
 // let itemSum = 0;
 // let inputCountToBuy = 0;
-// let inputCountToSell = 0;
+
 ////////////////////////////////////
 
 
@@ -101,7 +91,7 @@ function addButtonControl(price, amount, element) {
   }
 }
 
-function addRecord(price, amount,className1,norec){
+function addRecord(price, amount){
   if ((price <= 0) || (amount <= 0)) {
     return;
   } else {
@@ -130,22 +120,21 @@ function addRecord(price, amount,className1,norec){
     price = "";
     amount = "";
 
-    let divDefault = document.getElementById(norecId);
+    let divDefault = document.getElementsByClassName('no-recording');
     delBtn.addEventListener('click', function () {
       recordRow.remove();
       let div = document.createElement('div');
       div.className = "no-recording";
-      div.id =norecId;
       div.innerHTML = "Нет записей";
       if (document.getElementsByClassName(className1).length == 0)
-        divTable[iter].insertAdjacentElement('beforeend', div);
+        divTable.insertAdjacentElement('beforeend', div);
     });
     if (divDefault) {
       divDefault.remove();
     }
-    divTable[iter].appendChild(recordRow);
+    divTable.appendChild(recordRow);
     if (!recordRow) {
-      divTable[iter].insertAdjacentElement('afterbegin', divDefault);
+      divTable.insertAdjacentElement('afterbegin', divDefault);
     }
   }
 }
