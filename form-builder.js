@@ -4,74 +4,44 @@ let inputCountToBuy = 0;
 let itemPrice = 0;
 
 function createForm(container) {
-  let resultArray = [];
-  let plus = container.getElementsByClassName('plus');
-  let minus = container.getElementsByClassName('minus');
-  let addBtn= container.getElementsByClassName('add');
-  let inputAmount = container.getElementsByClassName('counter-units');
-  let inputPrice = container.getElementsByClassName('unit-price');
 
-  plus[0].addEventListener('click', () => {
-  inputCountToBuy = Number(changingCount('plus', inputAmount[0]));
-  addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
+  let plus = container.getElementsByClassName('plus')[0];
+  let minus = container.getElementsByClassName('minus')[0];
+  let addBtn= container.getElementsByClassName('add')[0];
+  let inputAmount = container.getElementsByClassName('counter-units')[0];
+  let inputPrice = container.getElementsByClassName('unit-price')[0];
+  let divTable = container.getElementsByClassName('container-content')[0];
+
+  plus.addEventListener('click', () => {
+  inputCountToBuy = Number(changingCount('plus', inputAmount));
+  addButtonControl(inputPrice.value, inputAmount.value, addBtn);
   });
 
-  minus[0].addEventListener('click', () => {
-  inputCountToBuy = Number(changingCount('minus', inputAmount[0]));
-  addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
+  minus.addEventListener('click', () => {
+  inputCountToBuy = Number(changingCount('minus', inputAmount));
+  addButtonControl(inputPrice.value, inputAmount.value, addBtn);
   });
 
-  inputPrice[0].addEventListener('input', () => {
-  itemPrice = Number(inputPrice[0].value);
-  addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
+  inputPrice.addEventListener('input', () => {
+  itemPrice = Number(inputPrice.value);
+  addButtonControl(inputPrice.value, inputAmount.value, addBtn);
   });
 
-  inputAmount[0].addEventListener('input', () => {
-  inputCountToBuy = Number(inputAmount[0].value);
-  addButtonControl(inputPrice[0].value, inputAmount[0].value, addBtn[0]);
+  inputAmount.addEventListener('input', () => {
+  inputCountToBuy = Number(inputAmount.value);
+  addButtonControl(inputPrice.value, inputAmount.value, addBtn);
   });
 
-  addBtn[0].addEventListener('click', function () {
-  addRecord(Number(inputPrice[0].value),Number(inputAmount[0].value));
-  inputPrice[0].value = "";
-  inputAmount[0].value = "";
-  addButtonControl(0, 0, addBtn[0]);
+  addBtn.addEventListener('click', function () {
+  addRecord(Number(inputPrice.value),Number(inputAmount.value), divTable);
+  inputPrice.value = "";
+  inputAmount.value = "";
+  addButtonControl(0, 0, addBtn);
   });
 
+  return
 
 }
-
-
-createForm(container1);
-
-createForm(container2);
-
-
-
-
-
-// Точки входа
-
-// const plus1 = document.getElementById('pl1');
-// const minus1 = document.getElementById('mn1');
-// const divTable = document.getElementsByClassName("container-content");
-// const addBtn = document.getElementById('buy');
-
-// const plus2 = document.getElementById('pl2');
-// const minus2 = document.getElementById('mn2');
-// const sellBtn = document.getElementById('sell');
-// ////////////////////////////////////
-// const inputPrice1 = document.getElementById('add-input');
-// const inputPrice2 = document.getElementById('sell-input');
-// const inputCount1 = document.getElementById('count-to-buy');
-// const inputCount2 = document.getElementById('count-to-sell');
-////////////////////////////////////
-// let itemPrice1 = 0;
-// let itemPrice2 = 0;
-// let itemSum = 0;
-// let inputCountToBuy = 0;
-
-////////////////////////////////////
 
 
 function changingCount(sign, element) {
@@ -91,13 +61,14 @@ function addButtonControl(price, amount, element) {
   }
 }
 
-function addRecord(price, amount){
+function addRecord(price, amount, divTable){
   if ((price <= 0) || (amount <= 0)) {
     return;
   } else {
-    let result = [];
+    let resultArray = [];
+    let result = {};
     let recordRow = document.createElement('div');
-    recordRow.classList.add(className1);
+    recordRow.classList.add('container-content-items');
     let recordAmount = document.createElement('div');
     recordAmount.classList.add('item', 'count');
     recordAmount.insertAdjacentHTML('afterbegin', `<span>${amount}</span>`);
@@ -117,16 +88,22 @@ function addRecord(price, amount){
     recordRow.insertAdjacentElement('beforeend', recordPrice);
     recordRow.insertAdjacentElement('beforeend', recordSum);
     recordRow.insertAdjacentElement('beforeend', delBtn);
+
+    result.amount = recordAmount.textContent;
+    result.price = recordPrice.textContent;
+    result.sum = recordSum.textContent;
+    resultArray = resultArray.push(result);
+
     price = "";
     amount = "";
 
-    let divDefault = document.getElementsByClassName('no-recording');
+    let divDefault = document.getElementsByClassName('no-recording')[0];
     delBtn.addEventListener('click', function () {
       recordRow.remove();
       let div = document.createElement('div');
       div.className = "no-recording";
       div.innerHTML = "Нет записей";
-      if (document.getElementsByClassName(className1).length == 0)
+      if (resultArray.length == 0)
         divTable.insertAdjacentElement('beforeend', div);
     });
     if (divDefault) {
@@ -136,68 +113,11 @@ function addRecord(price, amount){
     if (!recordRow) {
       divTable.insertAdjacentElement('afterbegin', divDefault);
     }
+    console.log(resultArray);
+    return resultArray;
   }
-}
+};
 
-////////////////////////////////////
-// addBtn.addEventListener('click', function () {
-//   addRecord(Number(inputPrice1.value),Number(inputCount1.value),'container-content-items-1','norec-1',0);
-//   inputPrice1.value = "";
-//   inputCount1.value = "";
-//   addButtonControl(0, 0, addBtn);
+createForm(container1);
 
-// })
-// ////////////////////////////////////
-// sellBtn.addEventListener('click', function () {
-//   addRecord(Number(inputPrice2.value),Number(inputCount2.value),'container-content-items-2','norec-2',1);
-//   inputPrice2.value = "";
-//   inputCount2.value = "";
-//   addButtonControl(0, 0, sellBtn);
-
-// })
-
-
-////////////////////////////////////
-// plus1.addEventListener('click', () => {
-//   inputCountToBuy = Number(changingCount('plus', inputCount1));
-//   addButtonControl(inputPrice1.value, inputCount1.value, addBtn);
-// });
-
-// minus1.addEventListener('click', () => {
-//   inputCountToBuy = Number(changingCount('minus', inputCount1));
-//   addButtonControl(inputPrice1.value, inputCount1.value, addBtn);
-// })
-
-// plus2.addEventListener('click', () => {
-//   inputCountToSell = Number(changingCount('plus', inputCount2));
-//   addButtonControl(inputPrice2.value, inputCount2.value, sellBtn);
-// })
-
-// minus2.addEventListener('click', () => {
-//   inputCountToSell = Number(changingCount('minus', inputCount2));
-//   addButtonControl(inputPrice2.value, inputCount2.value, sellBtn);
-// })
-
-
-////////////////////////////////////
-// inputPrice1.addEventListener('input', () => {
-//   itemPrice1 = Number(inputPrice1.value);
-//   addButtonControl(inputPrice1.value, inputCount1.value, addBtn);
-// })
-
-// ////////////////////////////////////
-// inputCount1.addEventListener('input', () => {
-//   inputCountToBuy = Number(inputCount1.value);
-//   addButtonControl(inputPrice1.value, inputCount1.value, addBtn);
-// })
-// ////////////////////////////////////
-// inputPrice2.addEventListener('input', () => {
-//   itemPrice2 = Number(inputPrice2.value);
-//   addButtonControl(inputPrice2.value, inputCount2.value, sellBtn);
-// })
-// ////////////////////////////////////
-// inputCount2.addEventListener('input', () => {
-//   inputCountToSell = Number(inputCount2.value);
-//   addButtonControl(inputPrice2.value, inputCount2.value, sellBtn);
-// });
-
+createForm(container2);
