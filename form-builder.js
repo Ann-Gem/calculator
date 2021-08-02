@@ -4,7 +4,8 @@ let inputCountToBuy = 0;
 let itemPrice = 0;
 
 function createForm(container) {
-
+  let res = {};
+  let state = [];
   let plus = container.getElementsByClassName('plus')[0];
   let minus = container.getElementsByClassName('minus')[0];
   let addBtn= container.getElementsByClassName('add')[0];
@@ -34,12 +35,17 @@ function createForm(container) {
 
   addBtn.addEventListener('click', function () {
   addRecord(Number(inputPrice.value),Number(inputAmount.value), divTable);
+  res.amount = Number(inputAmount.value);
+  res.price = Number(inputPrice.value);
+  res.sum = Number(inputAmount.value) * Number(inputPrice.value);
   inputPrice.value = "";
   inputAmount.value = "";
   addButtonControl(0, 0, addBtn);
+  state.push(res);
+  // return res;
   });
 
-  return
+  return state;
 
 }
 
@@ -65,7 +71,7 @@ function addRecord(price, amount, divTable){
   if ((price <= 0) || (amount <= 0)) {
     return;
   } else {
-    let resultArray = [];
+
     let result = {};
     let recordRow = document.createElement('div');
     recordRow.classList.add('container-content-items');
@@ -88,12 +94,6 @@ function addRecord(price, amount, divTable){
     recordRow.insertAdjacentElement('beforeend', recordPrice);
     recordRow.insertAdjacentElement('beforeend', recordSum);
     recordRow.insertAdjacentElement('beforeend', delBtn);
-
-    result.amount = recordAmount.textContent;
-    result.price = recordPrice.textContent;
-    result.sum = recordSum.textContent;
-    resultArray = resultArray.push(result);
-
     price = "";
     amount = "";
 
@@ -113,11 +113,12 @@ function addRecord(price, amount, divTable){
     if (!recordRow) {
       divTable.insertAdjacentElement('afterbegin', divDefault);
     }
-    console.log(resultArray);
-    return resultArray;
+
+    return result;
   }
 };
 
-createForm(container1);
+const form1 = createForm(container1);
 
-createForm(container2);
+const form2 = createForm(container2);
+
