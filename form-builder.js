@@ -4,7 +4,6 @@ let inputCountToBuy = 0;
 let itemPrice = 0;
 
 function createForm(container) {
-  let form = {};
   let res = {};
   let state = [];
   let plus = container.getElementsByClassName('plus')[0];
@@ -44,8 +43,7 @@ function createForm(container) {
     return state;
 
   });
-
-  return form = {
+   let form = {
     plus: plus,
     minus: minus,
     inputAmount: inputAmount,
@@ -53,7 +51,9 @@ function createForm(container) {
     divTable: divTable,
     addBtn: addBtn,
     state: state,
-  };
+   };
+
+  return form;
 
 }
 
