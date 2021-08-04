@@ -73,9 +73,6 @@ function commitRecord(price1, amount1, state) {
   return state;
 }
 
-
-
-
 function changingCount(sign, element) {
   if (sign == 'plus')
     element.value++;
@@ -93,12 +90,11 @@ function addButtonControl(price, amount, element) {
   }
 }
 
+
 function addRecord(price, amount, divTable,state) {
   if ((price <= 0) || (amount <= 0)) {
     return;
   } else {
-    let result = {};
-
     let recordRow = document.createElement('div');
     recordRow.classList.add('container-content-items');
     let recordAmount = document.createElement('div');
@@ -132,7 +128,6 @@ function addRecord(price, amount, divTable,state) {
         div.className = "no-recording";
         div.innerHTML = "Нет записей";
         divTable.insertAdjacentElement('beforeend', div);
-
       }
 
     });
@@ -143,8 +138,6 @@ function addRecord(price, amount, divTable,state) {
     if (!recordRow) {
       divTable.insertAdjacentElement('afterbegin', divDefault);
     }
-
-    return result;
   }
 };
 
