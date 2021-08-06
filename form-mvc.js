@@ -135,33 +135,29 @@ class View {
       for (let i=0;i<divList1.length;i++)
           divList1[i].remove();
   }
-  displayRecords(_records) {
 
-      ////debugger;
+  displayRecords(records) {
+//debugger;
       this.clearTable();
       let id = 0;
-
-
-      if (_records.length>0){
+      if (records.length>0){
           if (this.container.getElementsByClassName('no-recording').length > 0){
               this.container.getElementsByClassName('no-recording')[0].remove();
           }
-          console.log(_records);
-
-          for (var it=0;it<_records.length;it++){
-
+          console.log(records);
+          for (var it=0;it<records.length;it++){
               let recr = document.createElement('div');
               recr.classList.add('container-content-items');
               recr.id = it+1;
               let recordAmount = document.createElement('div');
               recordAmount.classList.add('item', 'count');
-              recordAmount.insertAdjacentHTML('afterbegin', `<span>${_records[it].amount}</span>`);
+              recordAmount.insertAdjacentHTML('afterbegin', `<span>${records[it].amount}</span>`);
               let recordPrice = document.createElement('div');
               recordPrice.classList.add('item', 'price', 'currency');
-              recordPrice.insertAdjacentHTML('afterbegin', `<span>${_records[it].price}</span>`)
+              recordPrice.insertAdjacentHTML('afterbegin', `<span>${records[it].price}</span>`)
               let recordSum = document.createElement('div');
               recordSum.classList.add('item', 'sum', 'currency');
-              recordSum.insertAdjacentHTML('afterbegin', `<span>${_records[it].amount* _records[it].price}</span>`);
+              recordSum.insertAdjacentHTML('afterbegin', `<span>${records[it].amount* records[it].price}</span>`);
               let del = document.createElement('div');
               del.classList.add('btn-del');
               let delBtn = document.createElement('button');
