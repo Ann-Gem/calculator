@@ -14,11 +14,9 @@ class Model {
   }
   deleteRecord(id) {
       this.onRecordsChanged(this.records.filter((value) => value.id != id+1));
-      //debugger;
   }
   // метод для связки и возможности
   bindRecordsChanged(callback) {
-      //debugger;
       this.onRecordsChanged = callback;
 
   }
@@ -73,7 +71,6 @@ class View {
   }
 
   eventAddRecord(handler) {
-      //debugger;
       this.addBtn.addEventListener('click', event => {
           event.preventDefault();
           this.price = this.inputPrice.value;
@@ -98,7 +95,6 @@ class View {
   }
   checkClearTable() {
       this.divList1 = this.container.getElementsByClassName('container-content-items');
-
       if ((this.divList.length === 0) && (this.container.getElementsByClassName('no-recording').length === 0)) {
           for (let i=0;i<this.divList.length;i++)
               this.divList[i].remove();
@@ -137,7 +133,6 @@ class View {
   }
 
   displayRecords(records) {
-//debugger;
       this.clearTable();
       let id = 0;
       if (records.length>0){
@@ -180,8 +175,6 @@ class Controller {
   constructor(model, view) {
       this.model = model;
       this.view = view;
-      ////debugger;
-      // this.view.eventAddRecord(this.handleAddRecord);
       this.view.eventRemoveRecord(this.handleDeleteRecord);
       this.onRecordsChanged(this.model.records);
       this.model.bindRecordsChanged(this.onRecordsChanged)
@@ -190,7 +183,6 @@ class Controller {
   }
 
   onRecordsChanged = (records) => {
-      //debugger;
       this.view.displayRecords(this.model.records)
   }
   handleAddRecord = (amount1, price1) => {

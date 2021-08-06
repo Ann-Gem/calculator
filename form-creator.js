@@ -1,7 +1,6 @@
 class FormCreator {
   constructor(iter) {
       this.records = [];
-
       this.currentAveragePrice = 0;
       this.currentProfit = 0;
       this.currentAveragePrice = 0;
@@ -19,6 +18,7 @@ class FormCreator {
       plus.addEventListener('click', () => {
           this.amount = this.changingCount('plus', inputAmount);
       });
+
       minus.addEventListener('click', () => {
           this.amount = this.changingCount('minus', inputAmount);
       });
@@ -40,14 +40,12 @@ class FormCreator {
           if (this.amount > 0 && this.price > 0) {
               this.modelAddRecord(this.amount, this.price);
               this.displayRecords();
-
-          }
+         }
       });
 
   }
 
   modelAddRecord(amount1, price1) {
-      debugger;
       let _record = {
           id: this.records.length > 0 ? this.records[this.records.length - 1].id + 1 : 1,
           amount: Number(amount1),
@@ -57,7 +55,6 @@ class FormCreator {
       this.records.push(_record);
   }
   modelDeleteRecord(id) {
-      debugger;
       this.records = this.records.filter((n) => {return n.id != parseInt(id)});
   }
 
@@ -88,7 +85,6 @@ class FormCreator {
 
 
   eventAddRecord() {
-      //debugger;
       this.addBtn.addEventListener('click', event => {
           event.preventDefault();
           this.price = this.inputPrice.value;
@@ -166,8 +162,7 @@ class FormCreator {
           }
           console.log(this.records);
 
-          for (var it = 0; it < this.records.length; it++) {
-
+          for (let it = 0; it < this.records.length; it++) {
               let recr = document.createElement('div');
               recr.classList.add('container-content-items');
               recr.id = it + 1;
@@ -186,7 +181,6 @@ class FormCreator {
               delBtn.classList.add('del');
               delBtn.insertAdjacentElement('afterbegin', del);
               /// добавление
-
               recr.insertAdjacentElement('beforeend', recordAmount);
               recr.insertAdjacentElement('beforeend', recordPrice);
               recr.insertAdjacentElement('beforeend', recordSum);
@@ -196,7 +190,6 @@ class FormCreator {
                   this.modelDeleteRecord(id);
                   recr.remove();
               });
-              //debugger;
               this.divTable.appendChild(recr);
           }
       };
