@@ -1,5 +1,11 @@
+
+
 class FormCreator {
-  constructor(iter) {
+    // addTableRow(id, amount, price, sum) {};
+    // deleteTableRow(id) {};
+    // subcsribe(callback);
+    // this.state
+    constructor(formContainer) {
       this.records = [];
       this.currentAveragePrice = 0;
       this.currentProfit = 0;
