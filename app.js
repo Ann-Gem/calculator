@@ -2,12 +2,16 @@ import * as importObj1  from './form-creator.js'
 import * as importObj2  from './average-section.js'
 
 
+// this.container = document.getElementsByClassName('container')[formContainer];
+// this.container = document.getElementsByClassName('container')[formContainer];
+
 const container1 = document.getElementById('container1');
 const container2 = document.getElementById('container2');
 
 
 const formBuy = new FormCreator(container1);
 const formSell = new FormCreator(container2);
+
 const formAverage = new AverageSection();
 
 
@@ -22,7 +26,7 @@ formAverage.setAveragePriceOfPos(25);
 // formAverage.setWishPrice1(999);
 // formAverage.setWishPrice2(999);
 // formAverage.setCountOfShare1(999);
-
+// // fi
 // _state1,_state2
 
 

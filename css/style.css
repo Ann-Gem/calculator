@@ -347,6 +347,9 @@ body {
 
 
 @media (max-width:999px) {
+  .points h2 {
+    padding-top: 2px;
+  }
   .points-in-out {
     flex-direction: column;
   }
@@ -370,6 +373,9 @@ body {
 
 
 @media screen and (max-width:500px) {
+  .points h2 {
+    padding-top: 2px;
+  }
 
   .points-in {
     min-width: 374px;

@@ -1,13 +1,27 @@
 class FormCreator {
-
+    // addTableRow(id, amount, price, sum) {};
+    // deleteTableRow(id) {};
+    // subcsribe(callback);
+    // this.state
     constructor(formContainer) {
         this.container = formContainer;
         this.state = [];
+        // this.currentAveragePrice = 0;
+        // this.currentProfit = 0;
+        // this.currentAveragePrice = 0;
         this.amount = 0;
         this.price = 0;
         this.initialize();
         this.initEventListeners();
+        // this.currentAveragePriceInput1 = this.container.getElementsByClassName('input-price')[0];
+        // this.currentAveragePriceInput2 = this.container.getElementsByClassName('counter-units')[1];
+        // this.currentAveragePriceInput1 = this.container.getElementsByClassName('input-price')[0];
+        // this.currentAveragePriceInput2 = this.container.getElementsByClassName('counter-units')[1];
+        // cur-profit
+
     }
+
+
 
     setCurrentAveragePrice(currentAveragePrice) {
         this.currentAveragePrice.value = currentAveragePrice;
@@ -21,6 +35,7 @@ class FormCreator {
         this.divTable = this.container.getElementsByClassName('container-content')[0];
         this.divList = this.container.getElementsByClassName('container-content')[0].getElementsByClassName('container-content-items');
     }
+
 
 
     getState() {
@@ -61,7 +76,7 @@ class FormCreator {
             this.clearInputs(this.inputAmount, this.inputPrice, this.addBtn);
             // this.clearTable();
             if (this.amount > 0 && this.price > 0) {
-                debugger;
+                // debugger;
                 this.modelAddRecord(this.amount, this.price);
                 // this.displaystate();
             }
