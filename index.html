@@ -16,7 +16,6 @@
   <title>Calculator</title>
 </head>
 <body>
-
   <header>
       <div class="header">
         <div class="header-container">
@@ -53,13 +52,13 @@
     <section class="points-in-out">
       <div class="points-in">
         <div class="points"><h2>Точки входа</h2></div>
-        <div class="container">
+        <div class="container" id="container1">
           <div class="container-table">
           <div class="container-content">
             <div class="container-content-header">
-              <div class="tabe-column-name"><span>кол-во акций</span></div>
-              <div class="tabe-column-name"><span>цена покупки</span></div>
-              <div class="tabe-column-name"><span>сумма</span></div>
+              <div class="table-column-name"><span>кол-во акций</span></div>
+              <div class="table-column-name"><span>цена покупки</span></div>
+              <div class="table-column-name"><span>сумма</span></div>
               <div class="empty"><span></span></div>
             </div>
             <div class="no-recording" id="norec-1">Нет записей</div>
@@ -80,13 +79,13 @@
       </div>
       <div class="points-out">
         <div class="points"><h2>Точки выхода</h2></div>
-        <div class="container">
+        <div class="container" id="container2">
           <div class="container-table">
           <div class="container-content">
             <div class="container-content-header">
-              <div class="tabe-column-name"><span>кол-во акций</span></div>
-              <div class="tabe-column-name"><span>цена продажи</span></div>
-              <div class="tabe-column-name"><span>сумма</span></div>
+              <div class="table-column-name"><span>кол-во акций</span></div>
+              <div class="table-column-name"><span>цена продажи</span></div>
+              <div class="table-column-name"><span>сумма</span></div>
               <div class="empty"><span></span></div>
             </div>
             <div class="no-recording" id="norec-2">Нет записей</div>
@@ -114,15 +113,15 @@
           <label class="tab tab-1" for="tab-1">Среднее</label>
           <label class="tab tab-2" for="tab-2">Усреднение позиций</label>
           <div class="content content-1">
-            <div class="avg-price-position-container"><p class="avg-p">Средняя цена позиции:</p><span id="avg-price-of-pos">207,5</span></div>
+            <div class="avg-price-position-container"><p class="avg-p">Средняя цена позиции:</p><span id="avg-price-of-pos">0</span></div>
             <div class="current-price-container">
               <div class="current-price">
                 <p class="cur-price">Текущая цена</p>
-                <input type="text" placeholder="" class="input-price">
+                <input id="cur-price-1" type="text" placeholder="" class="input-price">
               </div>
               <div class="current-price profit">
                 <p class="cur-price">Текущий профит</p>
-                <div class="cur-profit">+ 2 200 $</div>
+                <div class="cur-profit" id="cur-profit-1">+ 2 200 $</div>
               </div>
           </div>
           </div>
@@ -130,22 +129,24 @@
             <div class="avg-price-container">
               <div class="avg-price">
                 <p class="wish-price">Желаемая средняя цена</p>
-                <input type="text" placeholder="" class="input-price">
+                <input id="wish-price-1" type="text" placeholder="" class="input-price">
               </div>
               <div class="avg-price right">
                 <p class="wish-price">Текущая цена</p>
-                <input type="text" placeholder="" class="input-price">
+                <input  id="wish-price-2"  type="text" placeholder="" class="input-price">
               </div>
             </div>
-            <div class="count-of-share"><p>Количество акций к покупке:</p><span id="shares">10</span></div>
+            <div id="count-of-share-1" class="count-of-share"><p>Количество акций к покупке:</p><span id="shares">10</span></div>
             </div>
           </div>
         </div>
     </section>
 
   </main>
-  <script src="select.js"></script>
-  <script src="form-builder.js"></script>
-  <script src="app.js"></script>
+  <script src="selector.js"></script>
+  <script src="form-creator.js"></script>
+  <script src="average-section.js"></script>
+  <script type="module" src="pubsub.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
