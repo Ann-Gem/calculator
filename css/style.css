@@ -362,7 +362,7 @@ body {
     margin: 0 auto;
   }
   .points {
-    padding-top: 44px;
+    padding-top: 20px;
   }
   .container-add-field {
     width: 100%;
@@ -389,7 +389,7 @@ body {
     display: block;
   }
   .points {
-    padding-top: 20px;
+    padding-top: 2px;
     font-weight: 500;
     font-size: 16px;
     line-height: 18px;
