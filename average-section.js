@@ -1,14 +1,21 @@
 class AverageSection {
     constructor() {
-
         this.currentAveragePrice = 0;
         this.currentProfit = 0;
         // this.currentAveragePrice = 0;
         // this.amount = 0;
         // this.price = 0;
         this.initialize();
-        // this.initEventListeners();
     }
+
+    getPubsubEvent (params) {
+        console.log(`container= ${params.container}`);
+        console.log(`state= ${params.state}`);
+        console.log(params.state);
+      }
+
+
+
 
     initialize() {
         // Средняя цена позиции:
@@ -30,8 +37,8 @@ class AverageSection {
     }
 
     setCurrentAveragePrice(currentAveragePrice) {
-        this.currentAveragePrice.textContent='+ '+ currentAveragePrice+' $';
-    }
+        this.averagePriceOfPos.textContent='+ '+ currentAveragePrice.toString();
+}
     setAveragePriceOfPos(value) {
         this.averagePriceOfPos.value = value;
     }

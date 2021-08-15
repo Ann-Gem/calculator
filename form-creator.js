@@ -1,26 +1,13 @@
 class FormCreator {
-    // addTableRow(id, amount, price, sum) {};
-    // deleteTableRow(id) {};
-    // subcsribe(callback);
-    // this.state
-    constructor(formContainer) {
-        this.container = formContainer;
-        this.state = [];
-        // this.currentAveragePrice = 0;
-        // this.currentProfit = 0;
-        // this.currentAveragePrice = 0;
+    constructor(params) {
+        this.container = params.container;
+        this.state = params.state;
+        this.params = params;
         this.amount = 0;
         this.price = 0;
         this.initialize();
         this.initEventListeners();
-        // this.currentAveragePriceInput1 = this.container.getElementsByClassName('input-price')[0];
-        // this.currentAveragePriceInput2 = this.container.getElementsByClassName('counter-units')[1];
-        // this.currentAveragePriceInput1 = this.container.getElementsByClassName('input-price')[0];
-        // this.currentAveragePriceInput2 = this.container.getElementsByClassName('counter-units')[1];
-        // cur-profit
-
     }
-
 
 
     setCurrentAveragePrice(currentAveragePrice) {
@@ -37,6 +24,14 @@ class FormCreator {
     }
 
 
+    publishModel(_container,_state) {
+        console.log('Model-saved')
+        EventBus.publish('model_changed', {
+          container: _container,
+          state: _state
+        })
+      }
+
 
     getState() {
         return this.state;
@@ -48,9 +43,6 @@ class FormCreator {
     // get averagePriceOfPos() {
     //     return this._averagePriceOfPos;
     // }
-
-
-
 
 
 
@@ -112,6 +104,8 @@ class FormCreator {
         ///////  сюда callback для subscribers//////////////////////////////////////////////////////////////////////////
         ///////  пока синхронный вызов //////////////////////////////////////////////////////////////////////////
         this.addTableRow(_record.id, _record.amount, _record.price, _record.sum);
+
+        this.publishModel(this.container.id, this.state);
         /////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
     }
@@ -123,6 +117,7 @@ class FormCreator {
         ///////  сюда callback для subscribers//////////////////////////////////////////////////////////////////////////
         ///////  пока синхронный вызов //////////////////////////////////////////////////////////////////////////
         this.deleteTableRow(id);
+        this.publishModel(this.container.id, this.state);
         /////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
     }

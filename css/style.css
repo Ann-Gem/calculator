@@ -381,12 +381,14 @@ body {
     min-width: 374px;
     width: 93.5%;
     display: block;
+    min-height: 370px;
   }
   .points-out {
     min-width: 374px;
     width: 93.5%;
     padding-top: 10px;
     display: block;
+    min-height: 370;
   }
   .points {
     padding-top: 2px;
