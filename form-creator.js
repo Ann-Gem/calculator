@@ -24,6 +24,8 @@ class FormCreator {
     }
 
 
+
+
     publishModel(_container,_state) {
         console.log('Model-saved')
         EventBus.publish('model_changed', {
