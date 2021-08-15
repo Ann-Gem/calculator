@@ -113,7 +113,6 @@ class FormCreator {
     }
 
 
-
     modelDeleteRecord(id) {
         this.state = this.state.filter((n) => { return n.id != parseInt(id) });
         ///////  сюда callback для subscribers//////////////////////////////////////////////////////////////////////////

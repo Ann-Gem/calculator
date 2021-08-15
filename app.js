@@ -1,5 +1,5 @@
-const container1 = document.getElementById('container1');
-const container2 = document.getElementById('container2');
+const container1 = document.getElementById("container1");
+const container2 = document.getElementById("container2");
 
 const st1 = [];
 const st2 = [];
@@ -8,26 +8,25 @@ const formSell = new FormCreator({ container: container2, state: st2 });
 
 const formAverage = new AverageSection();
 
-EventBus.subscribe('model_changed', this.recalculateEvent);
+EventBus.subscribe("model_changed", this.recalculateEvent);
 
 let state1 = formBuy.getState();
 let state2 = formSell.getState();
 // let profit = calculateProfit();
 
 let params1 = {
-  container: '',
-  state: []
+  container: "",
+  state: [],
 };
-params1.container = 'container1';
+params1.container = "container1";
 params1.state = state1;
 
 let params2 = {
-  container: '',
-  state: []
+  container: "",
+  state: [],
 };
-params2.container = 'container2';
+params2.container = "container2";
 params2.state = state2;
-
 
 // let profit = calculaterProfit(_state1,_state2);
 
@@ -39,8 +38,6 @@ params2.state = state2;
 //////////////////   профит   ////////////////////////////////////
 
 function calculaterProfitAvg(_state1, _state2) {
-
-
   // for (let k = 0; k < _state2.length - 1; k++) {
   //   for (let h = _state1.length - 1; h >= 0; h--){
   //     debugger;
@@ -52,7 +49,6 @@ function calculaterProfitAvg(_state1, _state2) {
   //       }
   // }}
 
-
   let statlong1 = createLongState(_state1);
   let statlong2 = createLongState(_state2);
   let arr_profit = [];
@@ -60,9 +56,11 @@ function calculaterProfitAvg(_state1, _state2) {
   let profitl = 0;
   let avg = 0;
 
-
-
-  let realcount = Number(parseInt(Math.min(statlong1.length, statlong2.length)));
+  if (statlong1.length>0)
+    statlong2= getStateBeforeDateTime(statlong2,statlong1[0].id);
+  let realcount = Number(
+    parseInt(Math.min(statlong1.length, statlong2.length))
+  );
   //////////////////////   profit  ///////////////////////////////////////////////////////
   for (let k = 0; k < realcount; k++) {
     for (let h = statlong1.length - 1; h >= 0; h--) {
@@ -71,19 +69,20 @@ function calculaterProfitAvg(_state1, _state2) {
           //   id: this.state.length > 0 ? this.state[this.state.length - 1].id + 1 : 1,
           id: statlong2[k].id,
           amount: 1,
-          profit: Number(statlong2[k].price) - Number(statlong1[h].price)
+          profit: Number(statlong2[k].price) - Number(statlong1[h].price),
           // ,sum: Number(amount1) * Number(price1)
-        }
+        };
         arr_profit.push(record1);
         profitl += Number(record1.profit);
         // statlong1 = statlong1.splice(statlong1[h],1)
-        statlong1 = statlong1.filter((n) => { return n != statlong1[h] });
+        statlong1 = statlong1.filter((n) => {
+          return n != statlong1[h];
+        });
 
         break;
       }
       // else
       //   statlong2 = statlong2.filter((n) => { return n.id > statlong1[h].id });
-
     }
   }
 
@@ -104,7 +103,6 @@ function calculaterProfitAvg(_state1, _state2) {
   console.log("arr_avg=");
   console.log(statlong1);
 
-
   avg = calculateAverage(statlong1);
 
   formAverage.setCurProfit1(profitl);
@@ -114,7 +112,6 @@ function calculaterProfitAvg(_state1, _state2) {
   formAverage.setWishPrice2(avg);
 
   formAverage.setCurPrice1(avg);
-
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -129,40 +126,32 @@ function createLongState(_state) {
       let record = {
         //   id: this.state.length > 0 ? this.state[this.state.length - 1].id + 1 : 1,
         id: _state[i].id,
-        amount: 1.,
-        price: _state[i].price
+        amount: 1,
+        price: _state[i].price,
         // ,
         // sum: Number(amount1) * Number(price1)
-      }
+      };
       statenew.push(record);
       // statenew.push({_state.i,});
     }
-
   }
   return statenew;
-
 }
-
 
 function recalculateEvent(params) {
   console.log(`container= ${params.container}`);
-  if (params.container === 'container1') {
+  if (params.container === "container1") {
     console.log(`state1= ${params.state}`);
     console.log(params.state);
     state1 = params.state;
-
-  }
-  else if (params.container === 'container2') {
+  } else if (params.container === "container2") {
     console.log(`state2= ${params.state}`);
     console.log(params.state);
     state2 = params.state;
-  };
+  }
 
-
-
+  // if getStateStorageAmount()>
   calculaterProfitAvg(state1, state2);
-
-
 
   // let ca1 = calculateAverage(state1);
   // let ca2 = calculateAverage(state2);
@@ -173,16 +162,22 @@ function recalculateEvent(params) {
   // console.log("calculateAverage2=");
   // console.log(ca2);
 
-
   // formAverage.setAveragePriceOfPos(ca1);
   // formAverage.setCurrentAveragePrice(ca1);
-
 }
 
-
-
-
-
+function getStateBeforeDateTime(_state1,_datetime) {
+  let statecorrect = [];
+  if (_state1.length > 0) {
+    for (let i = 0; i < _state1.length; i++) {
+      if (_state1[i].id>=_datetime)
+        statecorrect.push(_state1[i]);
+    }
+  }
+  //  console.log("statecorrect=");
+  //   console.log(statecorrect);
+  return statecorrect;
+}
 
 function calculateAverage(_state) {
   let count1 = 0;
@@ -194,13 +189,10 @@ function calculateAverage(_state) {
     count1 += _state[i].amount;
     sum1 += _state[i].amount * _state[i].price;
   }
-  if (count1 != 0)
-    _avg = sum1 / count1;
+  if (count1 != 0) _avg = sum1 / count1;
 
   return Number(_avg).toFixed(2);
 }
-
-
 
 function calculateComboAverage(_state1, _state2) {
   let count1 = 0;
@@ -212,12 +204,10 @@ function calculateComboAverage(_state1, _state2) {
     count1 += _state[i].amount;
     sum1 += _state[i].amount * _state[i].price;
   }
-  if (count1 != 0)
-    _avg = sum1 / count1;
+  if (count1 != 0) _avg = sum1 / count1;
 
   return Number(_avg).toFixed(2);
 }
-
 
 function calculateOldProfit(_state1, _state2) {
   let count1 = 0;
@@ -243,9 +233,4 @@ function calculateOldProfit(_state1, _state2) {
   //     _avg=sum1/count1;
 
   return _profit;
-
 }
-
-
-
-
