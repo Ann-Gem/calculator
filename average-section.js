@@ -2,6 +2,9 @@ class AverageSection {
     constructor() {
         this.currentAveragePrice = 0;
         this.currentProfit = 0;
+        // this.currentAveragePrice = 0;
+        // this.amount = 0;
+        // this.price = 0;
         this.initialize();
     }
 
