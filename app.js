@@ -9,6 +9,7 @@ const formSell = new FormCreator({ container: container2, state: st2 });
 const formAverage = new AverageSection();
 
 EventBus.subscribe("model_changed", this.recalculateEvent);
+EventBus.subscribe("price_changed", this.recalcCountOfShares);
 
 let state1 = formBuy.getState();
 let state2 = formSell.getState();
@@ -33,6 +34,63 @@ params2.state = state2;
 // recalculateEvent(params1);
 // recalculateEvent(params2);
 ///////////////////////////////////////
+
+function recalculateEvent(params) {
+  console.log(`container= ${params.container}`);
+  if (params.container === "container1") {
+    console.log(`state1= ${params.state}`);
+    console.log(params.state);
+    state1 = params.state;
+  } else if (params.container === "container2") {
+    console.log(`state2= ${params.state}`);
+    console.log(params.state);
+    state2 = params.state;
+  }
+
+  // if getStateStorageAmount()>
+  debugger
+
+  let resArr = calculaterProfitAvg(state1, state2);
+
+  if (resArr[2] && resArr[3]) {
+    countAmountShares(...resArr);
+  }
+
+
+
+
+  // let sharesToBuy = countAmountShares(amount[1], amount[0], amount[2], amount[3]);
+
+  // formAverage.setCountOfShare1(sharesToBuy);
+
+  // let ca1 = calculateAverage(state1);
+  // let ca2 = calculateAverage(state2);
+
+  // console.log("calculateAverage1=");
+  // console.log(ca1);
+
+  // console.log("calculateAverage2=");
+  // console.log(ca2);
+
+  // formAverage.setAveragePriceOfPos(ca1);
+  // formAverage.setCurrentAveragePrice(ca1);
+  return resArr;
+
+}
+
+
+///////////////////////////Усреднение//////////////////////////////
+function recalcCountOfShares(params) {
+  let resArr = calculateAverage(state1, state2);
+  let curP = Number(params.wishPrice2);
+  let wishP = Number(params.wishPrice1);
+  if(curP> 0 && wishP > 0) {
+    countAmountShares(...resArr);
+  }
+
+}
+
+
 
 //////////////////////////////////////
 //////////////////   профит   ////////////////////////////////////
@@ -86,33 +144,71 @@ function calculaterProfitAvg(_state1, _state2) {
     }
   }
 
-  console.log("arr_profit=");
-  console.log(arr_profit);
-  ////////////////////////
-  console.log("profitl=");
-  console.log(profitl);
-  ////////////////////////
-  // console.log("statlong1=");
-  // console.log(statlong1);
-
-  // for (let i=0;i<arr_profit.lenght-1;i++)
-  // {
-  //   arr_avg = arr_avg.filter((n) => { return n != arr_profit[i]});
-  // };
-
   console.log("arr_avg=");
   console.log(statlong1);
 
   avg = calculateAverage(statlong1);
 
+
+
   formAverage.setCurProfit1(profitl);
-  formAverage.setAveragePriceOfPos(avg);
+  // formAverage.setAveragePriceOfPos(avg);
   formAverage.setCurrentAveragePrice(avg);
 
-  formAverage.setWishPrice2(avg);
+  let curP = Number(formAverage.wishPrice2.value);
+  let wishP = Number(formAverage.wishPrice1.value);
 
-  formAverage.setCurPrice1(avg);
+  debugger;
+
+
+  console.log("arr_profit=");
+  console.log(arr_profit);
+  ////////////////////////
+  console.log("profitl=");
+  console.log(profitl);
+
+
+  console.log("avg=");
+  console.log(avg);
+  ////////////////////////
+  console.log("statlong1=");
+  console.log(statlong1);
+
+  ////////////////////////
+  console.log("curP=");
+  console.log(curP);
+
+  ////////////////////////
+  console.log("wishP=");
+  console.log(wishP);
+
+  return [Number(avg), Number(statlong1.length), Number(curP), Number(wishP)];
 }
+
+
+function countAmountShares(avgPrice, amount, curP, wishP) {
+  let sharesToBuy;
+
+  formAverage.setAveragePriceOfPos(avgPrice);
+
+  // curP = Number(formAverage.wishPrice2);
+
+  // wishP = Number(formAverage.wishPrice1);
+
+  // sharesToBuy = ((Number(avgPrice)-Number(wishP))/(Number(wishP)-Number(curP)))*Number(amount);
+
+  if ( curP <=0 || wishP <=0) {
+    return 0;
+  } else {
+    sharesToBuy = Number(((avgPrice-wishP)/(wishP-curP))*amount);
+    formAverage.setCountOfShare1(sharesToBuy);
+    return sharesToBuy;
+
+  }
+
+  // formAverage.setCountOfShare1(sharesToBuy);
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -138,33 +234,6 @@ function createLongState(_state) {
   return statenew;
 }
 
-function recalculateEvent(params) {
-  console.log(`container= ${params.container}`);
-  if (params.container === "container1") {
-    console.log(`state1= ${params.state}`);
-    console.log(params.state);
-    state1 = params.state;
-  } else if (params.container === "container2") {
-    console.log(`state2= ${params.state}`);
-    console.log(params.state);
-    state2 = params.state;
-  }
-
-  // if getStateStorageAmount()>
-  calculaterProfitAvg(state1, state2);
-
-  // let ca1 = calculateAverage(state1);
-  // let ca2 = calculateAverage(state2);
-
-  // console.log("calculateAverage1=");
-  // console.log(ca1);
-
-  // console.log("calculateAverage2=");
-  // console.log(ca2);
-
-  // formAverage.setAveragePriceOfPos(ca1);
-  // formAverage.setCurrentAveragePrice(ca1);
-}
 
 function getStateBeforeDateTime(_state1,_datetime) {
   let statecorrect = [];

@@ -6,6 +6,7 @@ class AverageSection {
         // this.amount = 0;
         // this.price = 0;
         this.initialize();
+        // this.initEventListeners();
     }
 
     getPubsubEvent (params) {
@@ -13,6 +14,9 @@ class AverageSection {
         console.log(`state= ${params.state}`);
         console.log(params.state);
       }
+
+
+
 
 
 
@@ -36,6 +40,26 @@ class AverageSection {
         this.countOfShare1 = document.getElementById('shares');
     }
 
+
+    ///////////новое//////////////////////////////////////////////////////////////////////
+
+    // initEventListeners() {
+    //     this.wishPrice1.addEventListener('input', () => {
+    //         this.wishPrice1 = this.wishPrice1.value;
+    //     });
+    //     this.wishPrice2.addEventListener('input', () => {
+    //         this.wishPrice2 = this.wishPrice2.value;
+    //     })
+    // }
+
+    publishModel(wishPrice1, wishPrice2) {
+        console.log('price_changed -событие!!')
+        EventBus.publish('price_changed', {
+            wishPrice1: wishPrice1,
+            wishPrice2: wishPrice2
+        })
+      }
+
     setCurrentAveragePrice(currentAveragePrice) {
         this.averagePriceOfPos.textContent='+ '+ currentAveragePrice.toString();
 }
@@ -47,33 +71,33 @@ class AverageSection {
         this.curProfit1.textContent=' '+ value+' $';
     }
 
-    // // Текущая цена
+    // // Текущая цена//////////////////////////////////////////////////////////////////
     // get curPrice1() {
     //     return this._curPrice1;
     // }
     setCurPrice1(value) {
         this.curPrice1.value  = value;
     }
-    // // Желаемая средняя цена
-    // get wishPrice1() {
-    //     return this._wishPrice1;
-    // }
+    // // Желаемая средняя цена/////////////////////////////////////////////////////////
+    getWishPrice1() {
+        return this._wishPrice1;
+    }
     setWishPrice1(value) {
         this.wishPrice1.value  = value;
     }
-    // // Текущая цена
-    // get wishPrice2() {
-    //     return this._wishPrice2;
-    // }
+    // // Текущая цена//////////////////////////////////////////////////////////////////
+    getWishPrice2() {
+        return this._wishPrice2;
+    }
     setWishPrice2(value) {
         this.wishPrice2.value  = value;
     }
-    // // Количество акций к покупке:
+    // // Количество акций к покупке:////////////////////////////////////////////////////
     // get countOfShare1() {
     //     return this._countOfShare1;
     // }
     setCountOfShare1(value) {
         // this.countOfShare1 = value;
-        this.countOfShare1.textContent='+ '+ value+' шт.';
+        this.countOfShare1.textContent='+ '+ value;
     }
 }
