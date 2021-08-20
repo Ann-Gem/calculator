@@ -8,12 +8,18 @@ const formSell = new FormCreator({ container: container2, state: st2 });
 
 const formAverage = new AverageSection();
 
-EventBus.subscribe("model_changed", this.recalculateEvent);
-EventBus.subscribe("price_changed", this.recalcCountOfShares);
+EventBus.subscribe("model_changed", this.changedModelEvent);
+EventBus.subscribe("price_changed", this.changedPriceEvent);
 
 let state1 = formBuy.getState();
 let state2 = formSell.getState();
 // let profit = calculateProfit();
+
+let _curPrice1 = 0;
+let _wishPrice1 = 0;
+let _wishPrice2 = 0;
+
+let resArr = [];
 
 let params1 = {
   container: "",
@@ -35,7 +41,7 @@ params2.state = state2;
 // recalculateEvent(params2);
 ///////////////////////////////////////
 
-function recalculateEvent(params) {
+function changedModelEvent(params) {
   console.log(`container= ${params.container}`);
   if (params.container === "container1") {
     console.log(`state1= ${params.state}`);
@@ -47,50 +53,38 @@ function recalculateEvent(params) {
     state2 = params.state;
   }
 
+  totalRecalculation();
   // if getStateStorageAmount()>
-  debugger
-
-  let resArr = calculaterProfitAvg(state1, state2);
-
-  if (resArr[2] && resArr[3]) {
-    countAmountShares(...resArr);
-  }
-
-
-
-
-  // let sharesToBuy = countAmountShares(amount[1], amount[0], amount[2], amount[3]);
-
-  // formAverage.setCountOfShare1(sharesToBuy);
-
-  // let ca1 = calculateAverage(state1);
-  // let ca2 = calculateAverage(state2);
-
-  // console.log("calculateAverage1=");
-  // console.log(ca1);
-
-  // console.log("calculateAverage2=");
-  // console.log(ca2);
-
-  // formAverage.setAveragePriceOfPos(ca1);
-  // formAverage.setCurrentAveragePrice(ca1);
-  return resArr;
-
 }
-
 
 ///////////////////////////Усреднение//////////////////////////////
-function recalcCountOfShares(params) {
-  let resArr = calculateAverage(state1, state2);
-  let curP = Number(params.wishPrice2);
-  let wishP = Number(params.wishPrice1);
-  if(curP> 0 && wishP > 0) {
-    countAmountShares(...resArr);
-  }
+function changedPriceEvent(params) {
+  _curPrice1 = Number(params.curPrice1);
+  _wishPrice1 = Number(params.wishPrice1);
+  _wishPrice2 = Number(params.wishPrice2);
 
+  totalRecalculation();
 }
 
+function totalRecalculation() {
+  // state1;
+  // state2;
 
+  // _curPrice1 ;
+  // _wishPrice1 ;
+  // _wishPrice2;
+
+  resArr = calculaterProfitAvg(state1, state2);
+  countAmountShares(...resArr);
+  // if (resArr[2] && resArr[3]) {
+  //   countAmountShares(...resArr);
+  // }
+
+  // resArr = calculateAverage(state1, state2);
+  // if(this._wishPrice1> 0 && this._curPrice1  > 0&& this._wishPrice2) {
+  //   countAmountShares(...resArr);
+  // }
+}
 
 //////////////////////////////////////
 //////////////////   профит   ////////////////////////////////////
@@ -114,8 +108,8 @@ function calculaterProfitAvg(_state1, _state2) {
   let profitl = 0;
   let avg = 0;
 
-  if (statlong1.length>0)
-    statlong2= getStateBeforeDateTime(statlong2,statlong1[0].id);
+  if (statlong1.length > 0)
+    statlong2 = getStateBeforeDateTime(statlong2, statlong1[0].id);
   let realcount = Number(
     parseInt(Math.min(statlong1.length, statlong2.length))
   );
@@ -149,17 +143,14 @@ function calculaterProfitAvg(_state1, _state2) {
 
   avg = calculateAverage(statlong1);
 
-
-
   formAverage.setCurProfit1(profitl);
   // formAverage.setAveragePriceOfPos(avg);
   formAverage.setCurrentAveragePrice(avg);
 
-  let curP = Number(formAverage.wishPrice2.value);
-  let wishP = Number(formAverage.wishPrice1.value);
+  // let curP = Number(formAverage.wishPrice2.value);
+  // let wishP = Number(formAverage.wishPrice1.value);
 
   debugger;
-
 
   console.log("arr_profit=");
   console.log(arr_profit);
@@ -167,48 +158,57 @@ function calculaterProfitAvg(_state1, _state2) {
   console.log("profitl=");
   console.log(profitl);
 
-
   console.log("avg=");
   console.log(avg);
   ////////////////////////
-  console.log("statlong1=");
-  console.log(statlong1);
+  console.log("statlong1.length=");
+  console.log(statlong1.length);
+
+  //   let  _curPrice1 = 0;
+  // let  _wishPrice1 = 0;
+  // let  _wishPrice2 = 0;
 
   ////////////////////////
-  console.log("curP=");
-  console.log(curP);
+  console.log("_curPrice1=");
+  console.log(_curPrice1);
 
   ////////////////////////
-  console.log("wishP=");
-  console.log(wishP);
+  console.log("_wishPrice1=");
+  console.log(_wishPrice1);
 
-  return [Number(avg), Number(statlong1.length), Number(curP), Number(wishP)];
+  console.log("_wishPrice2=");
+  console.log(_wishPrice2);
+
+  return [Number(avg), Number(statlong1.length), _wishPrice2, _wishPrice1];
 }
-
 
 function countAmountShares(avgPrice, amount, curP, wishP) {
   let sharesToBuy;
 
-  formAverage.setAveragePriceOfPos(avgPrice);
+
 
   // curP = Number(formAverage.wishPrice2);
 
   // wishP = Number(formAverage.wishPrice1);
 
   // sharesToBuy = ((Number(avgPrice)-Number(wishP))/(Number(wishP)-Number(curP)))*Number(amount);
-
-  if ( curP <=0 || wishP <=0) {
-    return 0;
+  debugger;
+  if (curP <= 0 || wishP <= 0||avgPrice<=0 || amount<=0) {
+    formAverage.setAveragePriceOfPos(0);
+    formAverage.setCountOfShare1(0);
+    sharesToBuy=0;
+    // return 0;
   } else {
-    sharesToBuy = Number(((avgPrice-wishP)/(wishP-curP))*amount);
+    sharesToBuy=0;
+    formAverage.setAveragePriceOfPos(avgPrice);
+    sharesToBuy = Number(((avgPrice - wishP) / (wishP - curP)) * amount);
     formAverage.setCountOfShare1(sharesToBuy);
-    return sharesToBuy;
+
 
   }
-
+  return sharesToBuy.toFixed(2);
   // formAverage.setCountOfShare1(sharesToBuy);
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -234,13 +234,11 @@ function createLongState(_state) {
   return statenew;
 }
 
-
-function getStateBeforeDateTime(_state1,_datetime) {
+function getStateBeforeDateTime(_state1, _datetime) {
   let statecorrect = [];
   if (_state1.length > 0) {
     for (let i = 0; i < _state1.length; i++) {
-      if (_state1[i].id>=_datetime)
-        statecorrect.push(_state1[i]);
+      if (_state1[i].id >= _datetime) statecorrect.push(_state1[i]);
     }
   }
   //  console.log("statecorrect=");
